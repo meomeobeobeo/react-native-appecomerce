@@ -1,0 +1,25 @@
+{
+    "welcome": "Welcome to MeoEco",
+    "title": "Hope you happy and happy",
+    "home": "Home",
+    "search": "Search",
+    "favorite": "Favorite",
+    "set-language": "Switch language",
+    "user": "user",
+    "log-in": "Log in",
+    "sign-up": "Sign up",
+    "skip-for-now": "Skip for now",
+    "suggest-register": "If you don't have an account.",
+    "suggest-login": "If you have an account.",
+    "register": "Register",
+    "login": "Login",
+    "or": "OR",
+    "continute-with-facebook": "Continue with Facebook",
+    "continute-with-google": "Continue with Google",
+    "continute-with-apple": "Continue with Apple",
+    "user-name-placeholder": "User name",
+    "email-placeholder": "Email",
+    "password-placeholder": "Password",
+    "verify-code": "Verify code"
+  }
+  

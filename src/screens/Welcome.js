@@ -4,7 +4,7 @@ import { colors } from '../constants/theme'
 import icons from '../constants/icons'
 import Button from '../components/ButtonCustom'
 import ButtonCustom from '../components/ButtonCustom'
-export default function Welcome() {
+export default function Welcome({navigation}) {
     return (
         <SafeAreaView style={styles.body} >
             <View style={styles.slider}>
@@ -26,15 +26,19 @@ export default function Welcome() {
             </View>
             <View style={styles.control}  >
                
-                <ButtonCustom onPress={()=>{}} buttonText='Log in'/>
+                <ButtonCustom onPress={()=>{navigation.navigate('Login')}} buttonText='Log in'/>
                 <ButtonCustom
-                    onPress={()=>{}} 
+                    onPress={()=>{
+                        navigation.removeListener()
+                        navigation.navigate('Register')
+                    
+                    }} 
                     style={{backgroundColor: 'rgba(17, 17, 17, 0.0)' , width : '80%', borderRadius : 12 , borderWidth : 1}} 
                     buttonTextStyle={{color :  colors.black}}
                     buttonText='Sign up'
                     />
                 <ButtonCustom 
-                    onPress={()=>{}}
+                    onPress={()=>{navigation.navigate('Root')}}
                     style={{backgroundColor: 'rgba(17, 17, 17, 0.0)' , width : '80%', borderRadius : 12 , borderWidth : 0}} 
                     buttonTextStyle={{color :  '#40403d'}}
                     buttonText='Skip for now'

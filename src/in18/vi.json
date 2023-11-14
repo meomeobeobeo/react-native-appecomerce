@@ -1,0 +1,26 @@
+
+{
+    "welcome": "MeoEco xin chào",
+    "title": "Trải nghiệm mua sắm tốt nhất",
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "favorite": "Yêu thích",
+    "set-language": "Ngôn ngữ",
+    "user": "user",
+    "log-in": "Đăng nhập",
+    "sign-up": "Đăng kí",
+    "skip-for-now": "Tiếp tục",
+    "suggest-register": "Nếu bạn không có tài khoản.",
+    "suggest-login": "Nếu bạn có tài khoản.",
+    "register": "Đăng kí",
+    "login": "Đăng nhập",
+    "or": "Hay",
+    "continute-with-facebook": "Tiếp tục với facebook",
+    "continute-with-google": "Tiếp tục với google",
+    "continute-with-apple": "Tiếp tục với apple",
+    "user-name-placeholder": "Tên người dùng",
+    "email-placeholder": "Email",
+    "password-placeholder": "Mật khẩu",
+    "verify-code": "Mã xác nhận"
+  }
+  

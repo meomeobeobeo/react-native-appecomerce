@@ -1,17 +1,36 @@
-import { ImageBackground, StyleSheet, Text, View, SafeAreaView, ScrollView, StatusBar, TextInput, KeyboardAvoidingView, KeyboardAvoidingViewComponent } from 'react-native'
-import React, { useState } from 'react'
+import { ImageBackground, StyleSheet, Text, View, SafeAreaView, ScrollView, StatusBar, TextInput, KeyboardAvoidingView, KeyboardAvoidingViewComponent, Animated } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { colors, sizes } from '../constants/theme'
 import ButtonCustom from '../components/ButtonCustom'
 import icons from '../constants/icons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Icons from '../components/Icons'
+import { useFocusEffect } from '@react-navigation/native'
+import { useTranslation } from "react-i18next";
+import {i18next} from '../in18/in18';
+
+
 const widthBox = (sizes.width) * (4 / 9)
 const heightBox = (sizes.width) * (4 / 9)
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
 
-
+    const animatedValue = new Animated.Value(0);
     const [isVisiblePassWord, setIsVisiblePassword] = useState(false)
+    const {t} = useTranslation();
+    
+    useEffect(()=>{
+        navigation.addListener('focus',async ()=>{
+            console.log('login')
+        })
+    },[])
+    useFocusEffect(
+        React.useCallback(() => {
+          console.log('focus login')
+          console.log(navigation)
 
+          return ()=>{console.log('unfocus login')}
+        }, [navigation])
+      );
 
 
     const visiblePassWord = () => {
@@ -21,9 +40,9 @@ export default function LoginScreen() {
 
     return (
 
-        <ScrollView contentContainerStyle={{ flex: 1 }} keyboardShouldPersistTaps="handled" >
+        <ScrollView contentContainerStyle={{ flex: 1, backgroundColor : colors.white }} keyboardShouldPersistTaps="handled" >
 
-            <KeyboardAwareScrollView style={{ flex: 1 }} >
+            <KeyboardAwareScrollView style={{ flex: 1 , marginBottom: 20 }} >
                 <View style={styles.slider}>
                     <View style={{ backgroundColor: colors.lightPurple, position: 'absolute', width: widthBox, height: heightBox, right: 0, borderBottomLeftRadius: widthBox }}></View>
                     <View style = {{width : '100%' , justifyContent: 'center' , alignItems : 'center'}}>
@@ -40,7 +59,7 @@ export default function LoginScreen() {
                             style={styles.input}
                             onChangeText={() => { }}
                             autoCompleteType="email"
-                            placeholder="Email"
+                            placeholder= {t('email-placeholder')}
                             keyboardType="email-address"
                         />
 
@@ -50,7 +69,7 @@ export default function LoginScreen() {
                                 style={styles.input}
                                 onChangeText={() => { }}
                                 secureTextEntry={isVisiblePassWord}
-                                placeholder="Password"
+                                placeholder= {t('password-placeholder')}
                                 keyboardType="default"
                             />
                             {isVisiblePassWord ?
@@ -60,7 +79,7 @@ export default function LoginScreen() {
 
 
 
-
+                        <View style = {styles.suggest}><Text style = {{flex:1 , textAlign : 'left'}}>{t('suggest-register')} <Text style = {{color : colors.red}} onPress={()=>{navigation.navigate('Register')}} >{t('register')}</Text> </Text></View>
                     </View>
 
                 </View>
@@ -78,21 +97,21 @@ export default function LoginScreen() {
                         onPress={() => { }}
                         style={{ backgroundColor: colors.white, width: '80%', borderRadius: 12, borderWidth: 2, borderColor: colors.lightPurple }}
                         buttonTextStyle={{ color: colors.gray }}
-                        buttonText='Continute With Facebook'
+                        buttonText= {t('continute-with-facebook')}
                         iconName={'FaceBookLogo'}
                     />
                     <ButtonCustom
                         onPress={() => { }}
                         style={{ backgroundColor: colors.white, width: '80%', borderRadius: 12, borderWidth: 2, borderColor: colors.lightPurple }}
                         buttonTextStyle={{ color: colors.gray }}
-                        buttonText='Continute With Google'
+                        buttonText= {t('continute-with-google')}
                         iconName={'GoogleLogo'}
                     />
                     <ButtonCustom
                         onPress={() => { }}
                         style={{ backgroundColor: colors.white, width: '80%', borderRadius: 12, borderWidth: 2, borderColor: colors.lightPurple }}
                         buttonTextStyle={{ color: colors.gray }}
-                        buttonText='Continute With Apple'
+                        buttonText = {t('continute-with-apple')}
                         iconName={'AppleLogo'}
                     />
                 </View>
@@ -134,6 +153,13 @@ const styles = StyleSheet.create({
         gap: 12,
 
 
+    },
+    suggest : {
+        marginTop:12,
+        display:'flex',
+        flexDirection:'row',
+        width : '80%',
+        marginLeft:12
     },
     image: {
         flex: 1,

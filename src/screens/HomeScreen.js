@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
     return (
 
         <SafeAreaView style={{

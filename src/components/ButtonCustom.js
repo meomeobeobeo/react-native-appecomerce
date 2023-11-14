@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import {colors} from '../constants/theme'
 import icons from '../constants/icons'
+
 export default function ButtonCustom({ onPress ,iconName ,iconButtonSize = 24 , style = {}, backgroundColor = '#111', width = '80%', borderRadius = 12, borderWidth = 1, buttonText = 'Hello', padding = 12, buttonTextStyle = {} }) {
 
     // iconName is name of icon import as constants
@@ -23,6 +24,7 @@ export default function ButtonCustom({ onPress ,iconName ,iconButtonSize = 24 , 
             {
                 iconName ? <Image source={icons[iconName]} style = {{width : iconButtonSize , height : iconButtonSize}} />:<></>
             }
+            
             <Text style={[{ color: colors.white, textAlign: 'center', fontSize: 18, fontWeight: '600' }, buttonTextStyle]}>{buttonText}</Text>
         </TouchableOpacity>
     )
