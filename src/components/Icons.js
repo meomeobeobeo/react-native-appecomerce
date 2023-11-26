@@ -5,51 +5,41 @@ export default function Icons({ onPress, icon, style, size = 32 }) {
     const image = (
         <Image
             source={icons[icon]}
-            resizeMode='cover'
-            style={
-                [
-                    {
-                        width: size,
-                        height: size
-                    },
-                    style
-
-                ]
-
-            }
+            resizeMode="cover"
+            style={[
+                {
+                    width: size,
+                    height: size,
+                },
+                style,
+            ]}
         />
     )
     if (onPress) {
-        return <TouchableOpacity style={
-            [
-                {
-                    width: size,
-                    height: size
-                },
-                style
-
-            ]
-
-        } onPress={onPress} >
-            <Image
-                source={icons[icon]}
-                resizeMode='cover'
-                style={
-                    [
+        return (
+            <TouchableOpacity
+                style={[
+                    {
+                        width: size,
+                        height: size,
+                    },
+                    style,
+                ]}
+                onPress={onPress}
+            >
+                <Image
+                    source={icons[icon]}
+                    resizeMode="cover"
+                    style={[
                         {
                             width: size,
-                            height: size
+                            height: size,
                         },
-                       
-
-                    ]
-
-                }
-            />
-            
+                    ]}
+                />
             </TouchableOpacity>
-    }
-    else {
+        )
+    } else {
         return image
     }
 }

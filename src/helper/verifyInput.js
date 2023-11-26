@@ -1,18 +1,15 @@
-
-export const isEmail = (email)=>{
-
+export const isEmail = (email) => {
     return true
 }
 
-export const isOnlyText = (text)=>{
+export const isOnlyText = (text) => {
     return true
 }
 
-export const isOnlyNumber = (numberAsString)=>{
+export const isOnlyNumber = (numberAsString) => {
     return true
 }
 
-export const isNotHaveSpecialCharacter = ()=>{
+export const isNotHaveSpecialCharacter = () => {
     return true
 }
-

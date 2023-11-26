@@ -1,4 +1,3 @@
-
 {
     "welcome": "MeoEco xin chào",
     "title": "Trải nghiệm mua sắm tốt nhất",
@@ -9,7 +8,7 @@
     "user": "user",
     "log-in": "Đăng nhập",
     "sign-up": "Đăng kí",
-    "skip-for-now": "Tiếp tục",
+    "skip-for-now": "Tiếp tục mà không đăng nhập",
     "suggest-register": "Nếu bạn không có tài khoản.",
     "suggest-login": "Nếu bạn có tài khoản.",
     "register": "Đăng kí",
@@ -22,5 +21,4 @@
     "email-placeholder": "Email",
     "password-placeholder": "Mật khẩu",
     "verify-code": "Mã xác nhận"
-  }
-  
+}

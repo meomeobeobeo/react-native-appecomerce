@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ecomerve_app",
-    "slug": "ecomerve_app",
+    "name": "ecomerceapp",
+    "slug": "ecomerceapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.law30102001.ecomerceapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "696f3be6-501d-4764-81aa-9ba09869dc19"
+      }
     }
   }
 }
