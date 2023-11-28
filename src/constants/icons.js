@@ -15,7 +15,9 @@ const GoogleLogo = require('../../assets/icons/google.png')
 const AppleLogo = require('../../assets/icons/apple-logo.png')
 const VisibleLogo = require('../../assets/icons/Visible.png')
 const HideLogo = require('../../assets/icons/hide.png')
-
+const BellIcon = require('../../assets/icons/bellIcon.png')
+const CartIcon = require('../../assets/icons/cartIcon.png')
+const LogoNotText = require('../../assets/icons/LogoNotText.png')
 export default {
     Home,
     FavoriteFilled,
@@ -34,4 +36,7 @@ export default {
     AppleLogo,
     VisibleLogo,
     HideLogo,
+    BellIcon,
+    CartIcon,
+    LogoNotText
 }

@@ -24,7 +24,7 @@ export default function MainNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="Welcome"
+                initialRouteName="Root"
                 screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="Welcome" component={Welcome} />

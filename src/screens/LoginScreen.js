@@ -28,6 +28,7 @@ import LoadingModal from '../components/LoadingModal'
 import RederModalVerifyEmail from '../components/RederModalVerifyEmail'
 import * as api from '../api/index'
 import { getUniqueId } from 'react-native-device-info'
+import { timeOutApiCall } from '../helper/error'
 
 const widthBox = sizes.width * (4 / 9)
 const heightBox = sizes.width * (4 / 9)
@@ -118,16 +119,22 @@ export default function LoginScreen({ navigation }) {
             //network infomation
             const devideInfor = await getCurrentDevideInfor()
 
-            let result = await api.loginWithPassWord({
-                email: loginForm.email,
-                password: loginForm.password,
-                browser: null,
-                browserVersion: null,
-                devide_id: devideInfor.devide_id,
-                ip: devideInfor.ip,
-                os: devideInfor.os,
-                osVersion: devideInfor.osVersion,
+            const timeOutMs = 15000
+            let result = await timeOutApiCall({
+                apiPromise: api.loginWithPassWord({
+                    email: loginForm.email,
+                    password: loginForm.password,
+                    browser: null,
+                    browserVersion: null,
+                    devide_id: devideInfor.devide_id,
+                    ip: devideInfor.ip,
+                    os: devideInfor.os,
+                    osVersion: devideInfor.osVersion,
+                }),
+                timeoutMs : timeOutMs
             })
+            
+
 
             if (result.data?.statusCode === 202) {
                 // show modal verify devide

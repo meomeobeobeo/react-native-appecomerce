@@ -13,6 +13,7 @@ export const colors = {
     lightPurple: '#8A88E3',
     purple: '#1B134E',
     red: '#ff4d4d',
+    orange : '#FB5531'
 }
 
 export const shadow = {
