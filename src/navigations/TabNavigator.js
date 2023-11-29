@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, View, Animated } from 'react-native'
+import {
+    Image,
+    StyleSheet,
+    Text,
+    View,
+    Animated,
+    KeyboardAvoidingView,
+} from 'react-native'
 import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from '../screens/HomeScreen'
@@ -43,14 +50,22 @@ export default function TabNavigator() {
 
     const offsetAnimation = React.useRef(animated).current
     return (
-        <>
+        <KeyboardAvoidingView
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -100}
+            // keyboardVerticalOffset={sizes.height + 47}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={{ flex: 1 }}
+            enabled
+        >
             <Tab.Navigator
+                safeAreaInsets={{bottom : 0}}                
                 initialRouteName="Home"
                 screenOptions={{ headerShown: false, tabBarShowLabel: false }}
             >
                 {tabs.map((tab, index) => {
                     return (
                         <Tab.Screen
+                            
                             key={tab.name}
                             name={tab.name}
                             component={tab.screen}
@@ -98,7 +113,7 @@ export default function TabNavigator() {
                     },
                 ]}
             />
-        </>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -111,5 +126,11 @@ const styles = StyleSheet.create({
         zIndex: 100,
         bottom: 10,
         left: sizes.width / tabs.length / 2 - 5,
+    },
+    tabBar: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
     },
 })

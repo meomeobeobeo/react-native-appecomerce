@@ -18,6 +18,15 @@ const HideLogo = require('../../assets/icons/hide.png')
 const BellIcon = require('../../assets/icons/bellIcon.png')
 const CartIcon = require('../../assets/icons/cartIcon.png')
 const LogoNotText = require('../../assets/icons/LogoNotText.png')
+const Book = require('../../assets/icons/Book.png')
+const Car = require('../../assets/icons/Car.png')
+const Exterior = require('../../assets/icons/Exterior.png')
+const SoccerBall = require('../../assets/icons/SoccerBall.png')
+const Technology = require('../../assets/icons/Technology.png')
+const Star =  require('../../assets/icons/Start.png')
+const StarHalf =  require('../../assets/icons/StartHalf.png')
+const Scales =  require('../../assets/icons/Scales.png')
+const Cartblack = require('../../assets/icons/CartBlack.png')
 export default {
     Home,
     FavoriteFilled,
@@ -38,5 +47,16 @@ export default {
     HideLogo,
     BellIcon,
     CartIcon,
-    LogoNotText
+    LogoNotText,
+    Book,
+    Car,
+    Exterior,
+    SoccerBall,
+    Technology,
+    Star,
+    StarHalf,
+    Scales,
+    Cartblack
+    
+
 }

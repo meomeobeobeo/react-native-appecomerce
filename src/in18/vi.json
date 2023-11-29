@@ -20,5 +20,10 @@
     "user-name-placeholder": "Tên người dùng",
     "email-placeholder": "Email",
     "password-placeholder": "Mật khẩu",
-    "verify-code": "Mã xác nhận"
+    "verify-code": "Mã xác nhận",
+    "sport":"Thể thao",
+    "beautify":"Làm đẹp",
+    "houseware":"Đồ gia dụng",
+    "technology":"Công nghệ",
+    "fashion":"Thời trang"
 }
