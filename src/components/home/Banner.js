@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React, { memo, useCallback, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { colors, sizes } from '../../constants/theme'
 
@@ -80,6 +80,19 @@ const DotIndicators = ({ listData, styleAll, currentIndex }) => {
 
 function Banner({ bannerStyle, itemStyle }) {
     const [currentIndex, setCurrentIndex] = useState(0)
+
+    // const autoChangeCurrentIndex = ()=>{
+    //     setInterval(()=>{
+    //         if(currentIndex >= data.length){
+    //             setCurrentIndex(0)
+    //         }else{
+    //             setCurrentIndex(prev => prev + 1)
+    //         }
+    //     },2000)
+    // }
+    // useEffect(() => {
+    //     autoChangeCurrentIndex()
+    // }, [])
     console.log('Re render banner')
     const handleScroll = useCallback((event) => {
         //get the scroll position

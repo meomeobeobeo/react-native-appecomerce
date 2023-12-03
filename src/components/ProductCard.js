@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { colors, sizes } from '../constants/theme'
 import Icons from './Icons'
 
 export default function ProductCard({ item }) {
-    console.log(item)
+    // console.log(item)
     return (
         <View
             style={{
@@ -15,6 +15,8 @@ export default function ProductCard({ item }) {
                 borderRadius: 8,
                 justifyContent: 'flex-start',
                 alignItems: 'center',
+                borderColor : colors.moreLightGray,
+                borderWidth : 1
             }}
         >
             {/* image product */}
@@ -26,7 +28,7 @@ export default function ProductCard({ item }) {
                     borderRadius: 8,
                     resizeMode: 'cover',
                 }}
-                source={item.image}
+                source={{ uri: item.image }}
             />
             {/* name product */}
             <Text
@@ -50,7 +52,7 @@ export default function ProductCard({ item }) {
             <Text
                 style={{
                     margin: 4,
-                    fontSize: 20,
+                    fontSize: 18,
                 }}
             >
                 33,500,000 vnd
@@ -71,10 +73,14 @@ export default function ProductCard({ item }) {
                         alignItems: 'center',
                     }}
                 >
-                    <Icons icon={'Scales'} size={18} />
-                    <Text style={{ color: colors.blue }}>So sánh</Text>
+                    <TouchableOpacity style = {{flexDirection : 'row', gap : 4}}>
+                        <Icons icon={'Scales'} size={18} />
+                        <Text style={{ color: colors.blue }}>So sánh</Text>
+                    </TouchableOpacity>
                 </View>
-                <Icons icon={'Cartblack'} size={20} />
+                <TouchableOpacity>
+                    <Icons icon={'Cartblack'} size={20} />
+                </TouchableOpacity>
             </View>
         </View>
     )

@@ -5,10 +5,11 @@ const { width, height } = Dimensions.get('window')
 export const colors = {
     primary: '#070f18',
     gray: '#6d6d6d',
-    lightGray: '#b2b2b2',
+    lightGray: '#7C7C7C',
+    moreLightGray :"#E2E2E2",
     light: '#fbfbfb',
     white: '#fff',
-    black: '#000',
+    black: '#181725',
     lightBlue: '#5dd8ed',
     lightPurple: '#8A88E3',
     purple: '#1B134E',

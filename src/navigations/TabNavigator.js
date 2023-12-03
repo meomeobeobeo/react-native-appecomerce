@@ -16,6 +16,7 @@ import Icons from '../components/Icons'
 import { colors, sizes } from '../constants/theme'
 import UserScreen from '../screens/UserScreen'
 import LoginScreen from '../screens/LoginScreen'
+import ControlScreen from '../screens/ControlScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -38,7 +39,7 @@ const tabs = [
     {
         name: 'User',
         icon: 'User',
-        screen: LoginScreen,
+        screen: ControlScreen,
     },
 ]
 
@@ -59,7 +60,7 @@ export default function TabNavigator() {
         >
             <Tab.Navigator
                 safeAreaInsets={{bottom : 0}}                
-                initialRouteName="Home"
+                initialRouteName="User"
                 screenOptions={{ headerShown: false, tabBarShowLabel: false }}
             >
                 {tabs.map((tab, index) => {

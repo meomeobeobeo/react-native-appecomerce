@@ -31,6 +31,7 @@ export default function ButtonCustom({
                     flexDirection: 'row',
                     justifyContent: 'center',
                     gap: 8,
+                    alignItems : 'center'
                 },
                 style,
             ]}

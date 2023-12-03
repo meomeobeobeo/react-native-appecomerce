@@ -43,7 +43,7 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <HomeContext.Provider value={{}}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView style = {{backgroundColor : colors.white}} showsVerticalScrollIndicator={false}>
                 <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                     <SafeAreaView
                         style={{
@@ -118,9 +118,8 @@ export default function HomeScreen({ navigation }) {
                                         backgroundColor: '#F2F3F2',
                                         borderRadius: 8,
                                     }}
-                                    keyboardShouldPersistTaps="handled"            
+                                    keyboardShouldPersistTaps="handled"
                                     keyboardType="default"
-                                    
                                 />
                                 <Icons
                                     style={{
@@ -142,7 +141,7 @@ export default function HomeScreen({ navigation }) {
                         <View
                             style={{
                                 width: sizes.width - 16,
-                                backgroundColor: '#dddd',
+                                backgroundColor: colors.white,
                                 marginLeft: 8,
                                 height: 180,
                                 borderRadius: 12,
@@ -158,7 +157,7 @@ export default function HomeScreen({ navigation }) {
                         <View
                             style={{
                                 width: sizes.width - 16,
-                                backgroundColor: '#dddd',
+                                backgroundColor: '#fff',
                                 marginLeft: 8,
                                 marginTop: 8,
                                 height: 90,
@@ -177,10 +176,8 @@ export default function HomeScreen({ navigation }) {
                             }}
                             showsVerticalScrollIndicator={false}
                         >
-                            <SuggestProduct/>
-                            <SuggestProduct/>
-                          
-                            
+                            <SuggestProduct title={'Bán chạy'} />
+                            <SuggestProduct title={'Gợi ý hôm nay'} />
                         </View>
                     </SafeAreaView>
                 </KeyboardAwareScrollView>

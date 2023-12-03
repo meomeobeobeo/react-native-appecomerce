@@ -7,7 +7,7 @@ const Notification = require('../../assets/icons/Notification.png')
 const ArrowLeft = require('../../assets/icons/Arrow_Left.png')
 const Location = require('../../assets/icons/Location.png')
 const Filter = require('../../assets/icons/Filter.png')
-const Back = require('../../assets/icons/Back.png')
+const Back = require('../../assets/icons/back.png')
 const User = require('../../assets/icons/User.png')
 const Logo = require('../../assets/images/catmoon_rm.png')
 const FaceBookLogo = require('../../assets/icons/facebook.png')
@@ -27,6 +27,29 @@ const Star =  require('../../assets/icons/Start.png')
 const StarHalf =  require('../../assets/icons/StartHalf.png')
 const Scales =  require('../../assets/icons/Scales.png')
 const Cartblack = require('../../assets/icons/CartBlack.png')
+const ArrowRight = require('../../assets/icons/ArrowRight.png')
+
+const Credit = require('../../assets/icons/credit-card.png')
+const Information = require('../../assets/icons/information.png')
+const Language = require('../../assets/icons/language.png')
+const Logout = require('../../assets/icons/logout.png')
+const Map = require('../../assets/icons/maps-and-flags.png')
+const Quest = require('../../assets/icons/question.png')
+const ShoppingBag = require('../../assets/icons/shopping-bag.png')
+
+const Camera = require('../../assets/icons/Camera.png')
+const Calendar = require('../../assets/icons/calendar.png')
+const EditText = require('../../assets/icons/edit-text.png')
+const Address = require('../../assets/icons/Address.png')
+const CreditCard = require('../../assets/icons/credit-cards.png')
+const DigitalWallet = require('../../assets/icons/digital-wallet.png')
+const Visa = require('../../assets/icons/visa-logo.png')
+const MasterCard = require('../../assets/icons/master-card.png')
+
+
+
+
+
 export default {
     Home,
     FavoriteFilled,
@@ -56,7 +79,26 @@ export default {
     Star,
     StarHalf,
     Scales,
-    Cartblack
+    Cartblack,
+    ArrowRight,
+    Credit,
+    Information,
+    Language,
+    Logout,
+    Map,
+    Quest,
+    ShoppingBag,
+    Camera,
+    Calendar,
+    EditText,
+    Address,
+    CreditCard,
+    DigitalWallet,
+    Visa,
+    MasterCard
+    
+
+
     
 
 }
