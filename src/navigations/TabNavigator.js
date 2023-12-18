@@ -14,9 +14,9 @@ import FavoriteScreen from '../screens/FavoriteScreen'
 import icons from '../constants/icons'
 import Icons from '../components/Icons'
 import { colors, sizes } from '../constants/theme'
-import UserScreen from '../screens/UserScreen'
-import LoginScreen from '../screens/LoginScreen'
 import ControlScreen from '../screens/ControlScreen'
+import LiveStreamScreen from '../screens/LiveStreamScreen'
+import CategoryScreen from '../screens/CategoryScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -27,15 +27,26 @@ const tabs = [
         screen: HomeScreen,
     },
     {
-        name: 'Search',
+        name: 'Searh',
         icon: 'Search',
         screen: SearchScreen,
     },
     {
-        name: 'Favorite',
-        icon: 'Favorite',
-        screen: FavoriteScreen,
+        name: 'Category',
+        icon: 'Category',
+        screen: CategoryScreen,
     },
+
+    {
+        name: 'LiveStream',
+        icon: 'LiveStream',
+        screen: LiveStreamScreen,
+    },
+    // {
+    //     name: 'Favorite',
+    //     icon: 'Favorite',
+    //     screen: FavoriteScreen,
+    // },
     {
         name: 'User',
         icon: 'User',
@@ -55,18 +66,21 @@ export default function TabNavigator() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -100}
             // keyboardVerticalOffset={sizes.height + 47}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={{ flex: 1 }}
+            style={{ flex: 1, backgroundColor: colors.white }}
             enabled
         >
             <Tab.Navigator
-                safeAreaInsets={{bottom : 0}}                
-                initialRouteName="User"
+                sceneContainerStyle={{
+                    
+                    backgroundColor: colors.white,
+                }}
+                safeAreaInsets={{ bottom: 0 }}
+                initialRouteName="Search"
                 screenOptions={{ headerShown: false, tabBarShowLabel: false }}
             >
                 {tabs.map((tab, index) => {
                     return (
                         <Tab.Screen
-                            
                             key={tab.name}
                             name={tab.name}
                             component={tab.screen}
@@ -83,7 +97,7 @@ export default function TabNavigator() {
                                                     : '#fff',
                                                 borderRadius: 8,
                                             }}
-                                            size={36}
+                                            size={28}
                                             icon={tab.icon}
                                         />
                                     )

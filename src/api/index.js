@@ -1,6 +1,6 @@
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-const url = 'http://192.168.1.101:3002'
+const url = 'http://192.168.88.1:3002'
 const API = axios.create({
     baseURL: url,
     responseType: 'json',
@@ -34,7 +34,7 @@ export const loginWithPassWord = (
     },
 ) => {
     console.log('login with password')
-    console.log(formData)
+    
     return API.post('/auth/loginWithPassword', {
         ...formData,
     })
@@ -75,3 +75,23 @@ export const verifyOtpWithEmailWhenRegister = (
 export const testRequest = () => {
     return API.get('/test')
 }
+
+export const getAllSellingProducts = () => {
+    return API.get('/admin/selling-product')
+}
+
+export const getAllOutStandingProducts = () => {
+    return API.get('/admin/outstanding-product')
+}
+
+export const getProductDetailData = ({product_item_id})=>{
+    return API.get(`/admin/product-items/${product_item_id}`)
+}
+
+
+// purchase 
+export const purchaseShoppingCartItem = ({formData})=>{
+    return API.post('/purchase/purchaseShoppingCartItem',formData)
+}
+
+

@@ -14,10 +14,10 @@ import {
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors, sizes } from '../constants/theme'
-import ButtonCustom from '../components/ButtonCustom'
+import ButtonCustom from './ButtonCustom'
 import icons from '../constants/icons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Icons from '../components/Icons'
+import Icons from './Icons'
 const widthBox = sizes.width * (4 / 9)
 const heightBox = sizes.width * (4 / 9)
 

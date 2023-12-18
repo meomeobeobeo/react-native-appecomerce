@@ -25,9 +25,9 @@ export default function QuickAccessDirecTory() {
       
       */}
       <CategoryAction nameCategory={t('sport')} iconName={'SoccerBall'} />
-      <CategoryAction nameCategory={t('fashion')} iconName={'Car'} />
+      <CategoryAction nameCategory={t('fashion')} iconName={'Fashion'} />
       <CategoryAction nameCategory={t('houseware')} iconName={'Book'} />
-      <CategoryAction nameCategory={t('beautify')} iconName={'Exterior'} />
+      <CategoryAction nameCategory={t('beautify')} iconName={'Beauty'} />
       <CategoryAction nameCategory={t('technology')} iconName={'Technology'} />
 
     </View>

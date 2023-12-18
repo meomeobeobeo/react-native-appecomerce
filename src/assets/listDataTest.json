@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "id": "0030081012898317",
+            "product_id": "0030080765366574",
+            "SKU": "SKU",
+            "qty_in_stock": "20",
+            "product_image": "https://firebasestorage.googleapis.com/v0/b/meoeco-d3c20.appspot.com/o/image%2Fquan.jpg-6fbeec7f-3527-45ca-a2f8-f63c4e9d536a?alt=media&token=144ac50b-0a33-455a-affa-421adc5a37f1",
+            "price": "75000",
+            "name": "Quần thể thao ",
+            "createdAt": "2023-12-13T20:50:12.900Z",
+            "updatedAt": "2023-12-13T20:50:12.900Z",
+            "rateValue": 5
+        },
+        {
+            "id": "0030081949681394",
+            "product_id": "0030081745101695",
+            "SKU": "test",
+            "qty_in_stock": "23",
+            "product_image": "https://firebasestorage.googleapis.com/v0/b/meoeco-d3c20.appspot.com/o/image%2Fpaninox.jpg-71fa4519-9628-4ba0-b84b-2a9416a8eab2?alt=media&token=cc1e99f7-ddfd-4b14-b0b0-bf4a10e0f920",
+            "price": "1000000",
+            "name": "Chảo inox",
+            "createdAt": "2023-12-13T21:05:49.683Z",
+            "updatedAt": "2023-12-13T21:05:49.683Z",
+            "rateValue": 5
+        },
+        {
+            "id": "0030080938546699",
+            "product_id": "0030079145479289",
+            "SKU": "test",
+            "qty_in_stock": "10",
+            "product_image": "https://firebasestorage.googleapis.com/v0/b/meoeco-d3c20.appspot.com/o/image%2FiPhone-15-ble1.jpg-f5d9aebe-eab8-4240-8adc-efaf91a86b2d?alt=media&token=3bec4cbb-b877-40f6-b006-b2428b55da96",
+            "price": "30000000",
+            "name": "Iphone 15 blue",
+            "createdAt": "2023-12-13T20:48:58.547Z",
+            "updatedAt": "2023-12-13T20:48:58.547Z",
+            "rateValue": 5
+        },
+        {
+            "id": "0030081383186161",
+            "product_id": "0030080030291108",
+            "SKU": "sku",
+            "qty_in_stock": "10",
+            "product_image": "https://firebasestorage.googleapis.com/v0/b/meoeco-d3c20.appspot.com/o/image%2Fyonex.jpg-cb56c46a-1a95-4c87-89df-80bc1277a56b?alt=media&token=486d8d89-7016-4add-b37d-432b3afccf5b",
+            "price": "4000000",
+            "name": "Yonex new ",
+            "createdAt": "2023-12-13T20:56:23.187Z",
+            "updatedAt": "2023-12-13T20:56:41.878Z",
+            "rateValue": 5
+        }
+    ]
+}

@@ -7,9 +7,11 @@ import {
     TextInput,
     View,
 } from 'react-native'
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
+
 import icons from '../constants/icons'
 import { colors, sizes } from '../constants/theme'
 import CardButton from '../components/CardButton'
@@ -19,17 +21,32 @@ import Banner from '../components/home/Banner'
 import QuickAccessDirecTory from '../components/home/QuickAccessDirecTory'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SuggestProduct from '../components/SuggestProduct'
-
+import * as API from '../api/index'
+import LoadingScreen from './LoadingScreen'
 export const HomeContext = createContext()
 
+
 export default function HomeScreen({ navigation }) {
+    console.log('rerender home')
+
+    const [listSellingProduct, setListSellingProduct] = useState([])
+    const [listOutstandingProduct, setListOutstandingProduct] = useState([])
+    const [listProduct, setListProduct] = useState([])
+
+    const [isLoading, setIsloading] = useState(false)
+    // console.log(listSellingProduct)
+
     useFocusEffect(
         React.useCallback(() => {
+            setIsloading(true)
             async function fetchData() {
-                // You can await here
-
                 const userData = await AsyncStorage.getItem('userInfor')
-                console.log(userData)
+                const sellingProduct = await API.getAllSellingProducts()
+                const outStandingProduct = await API.getAllOutStandingProducts()
+
+                setListSellingProduct(sellingProduct.data.metaData)
+                setListOutstandingProduct(outStandingProduct.data.metaData)
+                setIsloading(false)
                 // ...
             }
 
@@ -41,9 +58,26 @@ export default function HomeScreen({ navigation }) {
         }, [navigation]),
     )
 
+    const handleSearchForcus = () => {
+        navigation.navigate('SearchScreen')
+    }
+
+    if (isLoading) {
+        return <LoadingScreen />
+    }
+
     return (
-        <HomeContext.Provider value={{}}>
-            <ScrollView style = {{backgroundColor : colors.white}} showsVerticalScrollIndicator={false}>
+        <HomeContext.Provider
+            value={{
+                listSellingProduct: listSellingProduct,
+                listOutstandingProduct: listOutstandingProduct,
+                listProduct: listProduct,
+            }}
+        >
+            <ScrollView
+                style={{ backgroundColor: colors.white }}
+                showsVerticalScrollIndicator={false}
+            >
                 <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                     <SafeAreaView
                         style={{
@@ -111,6 +145,7 @@ export default function HomeScreen({ navigation }) {
                                 }}
                             >
                                 <TextInput
+                                    onFocus={handleSearchForcus}
                                     placeholder="Tìm Kiếm"
                                     style={{
                                         width: '100%',
@@ -176,8 +211,15 @@ export default function HomeScreen({ navigation }) {
                             }}
                             showsVerticalScrollIndicator={false}
                         >
-                            <SuggestProduct title={'Bán chạy'} />
-                            <SuggestProduct title={'Gợi ý hôm nay'} />
+                            <SuggestProduct
+                                listData={listSellingProduct}
+                                title={'Bán chạy'}
+                            />
+                            <SuggestProduct
+                                listData={listOutstandingProduct}
+                                title={'Sản phẩm nổi bật'}
+                            />
+                            <SuggestProduct title={'Có thể bạn sẽ thích'} />
                         </View>
                     </SafeAreaView>
                 </KeyboardAwareScrollView>

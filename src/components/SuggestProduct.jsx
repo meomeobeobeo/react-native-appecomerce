@@ -26,10 +26,12 @@ const data = [
     // },
 ]
 const renderItem = ({ item, index, itemStyle }) => {
+   
     return <ProductCard item={item} key={index.toString()} />
 }
 
-export default function SuggestProduct({title , listProductData}) {
+export default function SuggestProduct({title , listProductData , listData = [] }) {
+    
     return (
         <View
             style={{
@@ -78,7 +80,7 @@ export default function SuggestProduct({title , listProductData}) {
             {/* Body  */}
             <FlatList
                 showsHorizontalScrollIndicator={false}
-                data={data}
+                data={listData}
                 renderItem={({ item, index }) => {
                     return renderItem({ item, index })
                 }}
@@ -87,6 +89,7 @@ export default function SuggestProduct({title , listProductData}) {
 
                 }}
                 horizontal={true}
+               
             />
         </View>
     )

@@ -18,6 +18,8 @@ import UserInformationScreen from '../screens/UserInformationScreen'
 import AddresssScreen from '../screens/AddresssScreen'
 import PaymentMethodScreen from '../screens/PaymentMethodScreen'
 import CreditCardScreen from '../screens/CreditCardScreen'
+import SearchScreen from '../screens/SearchScreen'
+import ProductDetail from '../screens/ProductDetail'
 
 const Stack = createStackNavigator()
 const animated = new Animated.Value(0)
@@ -28,22 +30,33 @@ export default function MainNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="CreditCardScreen"
-                screenOptions={{ headerShown: false }}
+                screenOptions={{
+                    headerShown: false,
+                }}
+                initialRouteName="ProductDetail"
             >
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Root" component={TabNavigator} />
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Register" component={SignUpScreen} />
-                <Stack.Screen name="UserInformationScreen" component={UserInformationScreen} />
+                <Stack.Screen
+                    name="UserInformationScreen"
+                    component={UserInformationScreen}
+                />
                 <Stack.Screen name="AddressScreen" component={AddresssScreen} />
-                <Stack.Screen name="PaymentMethodScreen" component={PaymentMethodScreen} />
-                <Stack.Screen name="CreditCardScreen" component={CreditCardScreen} />
-
-
-
-
-
+                <Stack.Screen
+                    name="PaymentMethodScreen"
+                    component={PaymentMethodScreen}
+                />
+                <Stack.Screen
+                    name="CreditCardScreen"
+                    component={CreditCardScreen}
+                />
+                <Stack.Screen
+                    name="ProductDetail"
+                    component={ProductDetail}
+                />
+                <Stack.Screen name="SearchScreen" component={SearchScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

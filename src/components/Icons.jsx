@@ -10,7 +10,8 @@ export default function Icons({ onPress, icon, style, size = 32  }) {
                 {
                     width: size,
                     height: size,
-                    borderRadius : 4
+                    borderRadius : 4,
+                    
                 },
                 style,
             ]}
@@ -23,6 +24,7 @@ export default function Icons({ onPress, icon, style, size = 32  }) {
                     {
                         width: size,
                         height: size,
+                        
 
                     },
                     style,
