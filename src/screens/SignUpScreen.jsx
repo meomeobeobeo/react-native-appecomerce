@@ -26,6 +26,7 @@ import LoadingScreen from './LoadingScreen'
 import LoadingModal from '../components/LoadingModal'
 import * as api from '../api/index'
 import { timeOutApiCall } from '../helper/error'
+import ModalNotify from '../components/ModalNotify'
 const widthBox = sizes.width * (4 / 9)
 const heightBox = sizes.width * (4 / 9)
 
@@ -38,6 +39,8 @@ export default function SignUpScreen({ navigation }) {
         email: null,
         password: null,
     })
+    const [isShowNotifyModal, setIsShowNotifyModal] = useState(false)
+    const [notifyMessage, setNotifyMessage] = useState([])
 
     const language = useSelector((state) => state?.language?.language)
     console.log(language)
@@ -46,6 +49,9 @@ export default function SignUpScreen({ navigation }) {
 
     const closeModal = () => {
         setIsShowOtpVerify(false)
+    }
+    const closeNotifyModal = () => {
+        setIsShowNotifyModal(false)
     }
 
     const visiblePassWord = () => {
@@ -96,16 +102,16 @@ export default function SignUpScreen({ navigation }) {
             }
         } catch (error) {
             setIsLoading(false)
+            setNotifyMessage(error?.response?.data?.message || ['Server error'])
+            setIsShowNotifyModal(true)
+
             console.error(error)
             // Handle the error here
         }
     }
 
     return (
-        <ScrollView
-            contentContainerStyle={{ flex: 1, backgroundColor: colors.white }}
-            keyboardShouldPersistTaps="handled"
-        >
+        <ScrollView contentContainerStyle={{ flex: 1, backgroundColor: colors.white }} keyboardShouldPersistTaps="handled">
             <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                 <View style={styles.slider}>
                     <View
@@ -133,11 +139,7 @@ export default function SignUpScreen({ navigation }) {
                                 justifyContent: 'center',
                             }}
                         >
-                            <ImageBackground
-                                source={icons.Logo}
-                                resizeMode="cover"
-                                style={styles.image}
-                            />
+                            <ImageBackground source={icons.Logo} resizeMode="cover" style={styles.image} />
                         </View>
                     </View>
                     <View style={styles.inputArea}>
@@ -289,13 +291,8 @@ export default function SignUpScreen({ navigation }) {
                     />
                 </View>
                 {<LoadingModal visible={isLoading} />}
-                {
-                    <RederModalVerifyEmail
-                        visible={isShowOtpVerify}
-                        closeModal={closeModal}
-                        formAction={verifyOtpSignUp}
-                    />
-                }
+                {<RederModalVerifyEmail visible={isShowOtpVerify} closeModal={closeModal} formAction={verifyOtpSignUp} />}
+                <ModalNotify header={'Có lỗi xảy ra'} notiMessage={notifyMessage} visible={isShowNotifyModal} closeModal={closeNotifyModal} />
             </KeyboardAwareScrollView>
         </ScrollView>
     )

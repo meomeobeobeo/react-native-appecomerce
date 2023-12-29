@@ -41,12 +41,11 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.moreLightGray,
     },
-    imageOverlay : {
-        position : 'absolute',
-        top : 0,
-        bottom : 0,
-        left : 0,
-        right : 0
-    }
-
+    imageOverlay: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
 })

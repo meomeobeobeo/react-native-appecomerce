@@ -1,6 +1,8 @@
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-const url = 'http://192.168.88.1:3002'
+// const url = 'http://192.168.1.101:3002'
+const url = 'https://meoecoapi.meoeco.click'
+
 const API = axios.create({
     baseURL: url,
     responseType: 'json',
@@ -13,9 +15,7 @@ const API = axios.create({
 
 API.interceptors.request.use(async (req) => {
     if (await AsyncStorage.getItem('AccessToken')) {
-        req.headers.Authorization = `Bearer ${
-            AsyncStorage.getItem('AccessToken') || ''
-        }`
+        req.headers.Authorization = `Bearer ${AsyncStorage.getItem('AccessToken') || ''}`
     }
     return req
 })
@@ -33,8 +33,6 @@ export const loginWithPassWord = (
         ip,
     },
 ) => {
-    console.log('login with password')
-    
     return API.post('/auth/loginWithPassword', {
         ...formData,
     })
@@ -84,14 +82,18 @@ export const getAllOutStandingProducts = () => {
     return API.get('/admin/outstanding-product')
 }
 
-export const getProductDetailData = ({product_item_id})=>{
+export const getProductDetailData = ({ product_item_id }) => {
     return API.get(`/admin/product-items/${product_item_id}`)
 }
 
-
-// purchase 
-export const purchaseShoppingCartItem = ({formData})=>{
-    return API.post('/purchase/purchaseShoppingCartItem',formData)
+// purchase
+export const purchaseShoppingCartItem = ({ formData }) => {
+    return API.post('/purchase/purchaseShoppingCartItem', formData)
 }
 
-
+export const getListPaymentMethodForUser = (userId) => {
+    return API.get(`/user-payment-method/foruser/${userId}`)
+}
+export const addCreditCard = ({ formData }) => {
+    return API.post('/user-payment-method', formData)
+}

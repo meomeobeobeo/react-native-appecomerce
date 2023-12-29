@@ -1,13 +1,4 @@
-import {
-    ImageBackground,
-    StyleSheet,
-    Text,
-    View,
-    ScrollView,
-    TextInput,
-    Modal,
-    TouchableOpacity,
-} from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, ScrollView, TextInput, Modal, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { colors, sizes } from '../constants/theme'
 import ButtonCustom from './ButtonCustom'
@@ -22,10 +13,7 @@ import loadingAnimate from '../assets/Loading.json'
 export default function LoadingModal({ visible }) {
     return (
         <Modal animationType="fade" transparent={true} visible={visible}>
-            <TouchableOpacity
-                style={[styles.modalBackDrop]}
-                activeOpacity={1}
-            >
+            <TouchableOpacity style={[styles.modalBackDrop]} activeOpacity={1}>
                 <ScrollView
                     contentContainerStyle={{
                         flex: 1,
@@ -57,12 +45,10 @@ export default function LoadingModal({ visible }) {
                             ]}
                         >
                             <LottieView
-                                
                                 style={{
                                     backgroundColor: 'rgba(0,0,0,0.0)',
                                     width: sizes.width * (1 / 2),
                                     height: sizes.width * (1 / 2),
-                                    
                                 }}
                                 source={loadingAnimate}
                                 autoPlay

@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import icons from '../constants/icons'
-export default function Icons({ onPress, icon, style, size = 32  }) {
+export default function Icons({ onPress, icon, style, size = 32 }) {
     const image = (
         <Image
             source={icons[icon]}
@@ -10,8 +10,7 @@ export default function Icons({ onPress, icon, style, size = 32  }) {
                 {
                     width: size,
                     height: size,
-                    borderRadius : 4,
-                    
+                    borderRadius: 4,
                 },
                 style,
             ]}
@@ -24,8 +23,6 @@ export default function Icons({ onPress, icon, style, size = 32  }) {
                     {
                         width: size,
                         height: size,
-                        
-
                     },
                     style,
                 ]}
@@ -38,7 +35,6 @@ export default function Icons({ onPress, icon, style, size = 32  }) {
                         {
                             width: size,
                             height: size,
-                            
                         },
                     ]}
                 />

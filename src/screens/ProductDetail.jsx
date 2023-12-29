@@ -1,13 +1,4 @@
-import {
-    Image,
-    ImageBackground,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { memo, useCallback, useMemo, useState } from 'react'
 import { colors, sizes } from '../constants/theme'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -24,11 +15,7 @@ import ModalChooseVariation from '../components/ModalChooseVariation'
 const ImageSekeleton = () => {
     return (
         <SkeletonPlaceholder>
-            <SkeletonPlaceholder.Item
-                borderRadius={8}
-                width={sizes.width}
-                height={sizes.height / 2}
-            ></SkeletonPlaceholder.Item>
+            <SkeletonPlaceholder.Item borderRadius={8} width={sizes.width} height={sizes.height / 2}></SkeletonPlaceholder.Item>
         </SkeletonPlaceholder>
     )
 }
@@ -36,8 +23,7 @@ function ProductDetail({ navigation }) {
     const [isLoading, setIsLoading] = useState(true)
     const [isImageLoading, setIsImageLoading] = useState(true)
     const [productDetail, setProductDetail] = useState(null)
-    const [isShowModalChooseVariation, setIsShowModalChooseVariation] =
-        useState(false)
+    const [isShowModalChooseVariation, setIsShowModalChooseVariation] = useState(false)
     const [variationChoose, setVariationChoose] = useState([])
     const [purchaseForm, setPurChaseForm] = useState({})
     const [action_type, setAction_type] = useState('add_to_cart')
@@ -89,10 +75,7 @@ function ProductDetail({ navigation }) {
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView
-                style={{ backgroundColor: colors.white, flex: 1 }}
-                showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={{ backgroundColor: colors.white, flex: 1 }} showsVerticalScrollIndicator={false}>
                 <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                     <SafeAreaView
                         style={{
@@ -163,24 +146,9 @@ function ProductDetail({ navigation }) {
                                         marginRight: 8,
                                     }}
                                 >
-                                    <Icons
-                                        style={{ marginLeft: 8 }}
-                                        onPress={() => {}}
-                                        icon={'ShareFill'}
-                                        size={28}
-                                    />
-                                    <Icons
-                                        style={{ marginLeft: 8 }}
-                                        onPress={() => {}}
-                                        icon={'AddShoppingCard'}
-                                        size={28}
-                                    />
-                                    <Icons
-                                        style={{ marginLeft: 8 }}
-                                        onPress={() => {}}
-                                        icon={'MoreInfor'}
-                                        size={20}
-                                    />
+                                    <Icons style={{ marginLeft: 8 }} onPress={() => {}} icon={'ShareFill'} size={28} />
+                                    <Icons style={{ marginLeft: 8 }} onPress={() => {}} icon={'AddShoppingCard'} size={28} />
+                                    <Icons style={{ marginLeft: 8 }} onPress={() => {}} icon={'MoreInfor'} size={20} />
                                 </View>
                             </View>
                         </View>
@@ -209,9 +177,7 @@ function ProductDetail({ navigation }) {
                                     borderBottomWidth: 0,
                                 }}
                             >
-                                {`${formatNumberWithCommas(
-                                    productDetail.price,
-                                )} VND`}
+                                {`${formatNumberWithCommas(productDetail.price)} VND`}
                             </Text>
                             <View
                                 style={{
@@ -277,16 +243,8 @@ function ProductDetail({ navigation }) {
                                             marginRight: 20,
                                         }}
                                     >
-                                        <Icons
-                                            onPress={() => {}}
-                                            icon={'FavoriteFill'}
-                                            size={18}
-                                        />
-                                        <Icons
-                                            onPress={() => {}}
-                                            icon={'Share'}
-                                            size={18}
-                                        />
+                                        <Icons onPress={() => {}} icon={'FavoriteFill'} size={18} />
+                                        <Icons onPress={() => {}} icon={'Share'} size={18} />
                                     </View>
                                 </View>
                             </View>
@@ -318,11 +276,7 @@ function ProductDetail({ navigation }) {
                                     >
                                         Vocher
                                     </Text>
-                                    <Icons
-                                        icon={'Next'}
-                                        size={18}
-                                        style={{ marginRight: 12 }}
-                                    />
+                                    <Icons icon={'Next'} size={18} style={{ marginRight: 12 }} />
                                 </View>
                                 <View
                                     style={{
@@ -380,11 +334,7 @@ function ProductDetail({ navigation }) {
                                             Vận chuyển
                                         </Text>
                                     </View>
-                                    <Icons
-                                        icon={'Next'}
-                                        size={18}
-                                        style={{ marginRight: 12 }}
-                                    />
+                                    <Icons icon={'Next'} size={18} style={{ marginRight: 12 }} />
                                 </View>
                             </View>
                             <View
@@ -420,15 +370,10 @@ function ProductDetail({ navigation }) {
                                                 width: 60,
                                                 height: 60,
                                                 borderRadius: 200,
-                                                backgroundColor:
-                                                    colors.moreLightGray,
+                                                backgroundColor: colors.moreLightGray,
                                             }}
                                         >
-                                            <ImageBackground
-                                                source={require('../../assets/icons/LogoNotText.png')}
-                                                style={{ flex: 1 }}
-                                                resizeMode="contain"
-                                            />
+                                            <ImageBackground source={require('../../assets/icons/LogoNotText.png')} style={{ flex: 1 }} resizeMode="contain" />
                                         </View>
                                         <View
                                             style={{
@@ -436,9 +381,7 @@ function ProductDetail({ navigation }) {
                                                 gap: 4,
                                             }}
                                         >
-                                            <Text style={{ fontSize: 14 }}>
-                                                Meomeo shop
-                                            </Text>
+                                            <Text style={{ fontSize: 14 }}>Meomeo shop</Text>
                                             <View
                                                 style={{
                                                     flexDirection: 'row',
@@ -491,11 +434,7 @@ function ProductDetail({ navigation }) {
                                             Mô tả sản phẩm
                                         </Text>
                                     </View>
-                                    <Icons
-                                        icon={'Next'}
-                                        size={18}
-                                        style={{ marginRight: 12 }}
-                                    />
+                                    <Icons icon={'Next'} size={18} style={{ marginRight: 12 }} />
                                 </View>
                             </View>
                             {/* Evaluate of customer */}
@@ -536,11 +475,7 @@ function ProductDetail({ navigation }) {
                                             Đánh giá sản phẩm
                                         </Text>
                                     </View>
-                                    <Icons
-                                        icon={'Next'}
-                                        size={18}
-                                        style={{ marginRight: 12 }}
-                                    />
+                                    <Icons icon={'Next'} size={18} style={{ marginRight: 12 }} />
                                 </View>
                                 <View
                                     style={{
@@ -552,11 +487,7 @@ function ProductDetail({ navigation }) {
                                     }}
                                 >
                                     <View style={{ width: 48, height: 48 }}>
-                                        <ImageBackground
-                                            style={{ flex: 1 }}
-                                            resizeMode="contain"
-                                            source={require('../../assets/images/defaultAvatar.png')}
-                                        />
+                                        <ImageBackground style={{ flex: 1 }} resizeMode="contain" source={require('../../assets/images/defaultAvatar.png')} />
                                     </View>
                                     {/*customer */}
                                     <View
@@ -565,9 +496,7 @@ function ProductDetail({ navigation }) {
                                             justifyContent: 'center',
                                         }}
                                     >
-                                        <Text style={{ fontSize: 14 }}>
-                                            Customer name
-                                        </Text>
+                                        <Text style={{ fontSize: 14 }}>Customer name</Text>
                                         {/* start  */}
                                         <View
                                             style={{
@@ -585,26 +514,11 @@ function ProductDetail({ navigation }) {
                                                     alignItems: 'center',
                                                 }}
                                             >
-                                                <Icons
-                                                    icon={'Star'}
-                                                    size={16}
-                                                />
-                                                <Icons
-                                                    icon={'Star'}
-                                                    size={16}
-                                                />
-                                                <Icons
-                                                    icon={'Star'}
-                                                    size={16}
-                                                />
-                                                <Icons
-                                                    icon={'Star'}
-                                                    size={16}
-                                                />
-                                                <Icons
-                                                    icon={'StarHalf'}
-                                                    size={16}
-                                                />
+                                                <Icons icon={'Star'} size={16} />
+                                                <Icons icon={'Star'} size={16} />
+                                                <Icons icon={'Star'} size={16} />
+                                                <Icons icon={'Star'} size={16} />
+                                                <Icons icon={'StarHalf'} size={16} />
                                             </View>
 
                                             <View
@@ -620,8 +534,7 @@ function ProductDetail({ navigation }) {
                                                 marginTop: 8,
                                                 paddingTop: 4,
                                                 borderTopWidth: 0.5,
-                                                borderColor:
-                                                    colors.moreLightGray,
+                                                borderColor: colors.moreLightGray,
                                             }}
                                         >
                                             <Text>Sản phẩm rất tốt</Text>
@@ -652,10 +565,7 @@ function ProductDetail({ navigation }) {
                                         marginVertical: 24,
                                     }}
                                 >
-                                    <SuggestProduct
-                                        listData={data.data}
-                                        title={'Sản phẩm tương tự'}
-                                    />
+                                    <SuggestProduct listData={data.data} title={'Sản phẩm tương tự'} />
                                 </View>
                             </View>
                         </View>
@@ -708,9 +618,7 @@ function ProductDetail({ navigation }) {
                         height: 60,
                     }}
                 >
-                    <Text style={{ fontSize: 20, color: colors.white }}>
-                        Mua
-                    </Text>
+                    <Text style={{ fontSize: 20, color: colors.white }}>Mua</Text>
                 </TouchableOpacity>
                 <ModalChooseVariation
                     product_item_id={productDetail.id}

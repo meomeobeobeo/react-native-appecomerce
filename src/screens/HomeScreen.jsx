@@ -1,12 +1,4 @@
-import {
-    ImageBackground,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-} from 'react-native'
+import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { createContext, useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -24,7 +16,6 @@ import SuggestProduct from '../components/SuggestProduct'
 import * as API from '../api/index'
 import LoadingScreen from './LoadingScreen'
 export const HomeContext = createContext()
-
 
 export default function HomeScreen({ navigation }) {
     console.log('rerender home')
@@ -74,10 +65,7 @@ export default function HomeScreen({ navigation }) {
                 listProduct: listProduct,
             }}
         >
-            <ScrollView
-                style={{ backgroundColor: colors.white }}
-                showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={{ backgroundColor: colors.white }} showsVerticalScrollIndicator={false}>
                 <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                     <SafeAreaView
                         style={{
@@ -100,11 +88,7 @@ export default function HomeScreen({ navigation }) {
                                     justifyContent: 'center',
                                 }}
                             >
-                                <ImageBackground
-                                    source={icons.LogoNotText}
-                                    resizeMode="cover"
-                                    style={styles.image}
-                                />
+                                <ImageBackground source={icons.LogoNotText} resizeMode="cover" style={styles.image} />
                             </View>
 
                             <View
@@ -114,8 +98,7 @@ export default function HomeScreen({ navigation }) {
                                     height: (sizes.width * 1) / 3,
                                     backgroundColor: colors.lightPurple,
                                     right: 0,
-                                    borderBottomLeftRadius:
-                                        (sizes.width * 1) / 3,
+                                    borderBottomLeftRadius: (sizes.width * 1) / 3,
                                 }}
                             >
                                 <View
@@ -182,10 +165,7 @@ export default function HomeScreen({ navigation }) {
                                 borderRadius: 12,
                             }}
                         >
-                            <Banner
-                                bannerStyle={styles.bannerStyle}
-                                itemStyle={styles.itemStyle}
-                            />
+                            <Banner bannerStyle={styles.bannerStyle} itemStyle={styles.itemStyle} />
                         </View>
 
                         {/* Quick access category and service */}
@@ -211,15 +191,9 @@ export default function HomeScreen({ navigation }) {
                             }}
                             showsVerticalScrollIndicator={false}
                         >
-                            <SuggestProduct
-                                listData={listSellingProduct}
-                                title={'Bán chạy'}
-                            />
-                            <SuggestProduct
-                                listData={listOutstandingProduct}
-                                title={'Sản phẩm nổi bật'}
-                            />
-                            <SuggestProduct title={'Có thể bạn sẽ thích'} />
+                            <SuggestProduct listData={listSellingProduct} title={'Bán chạy'} />
+                            <SuggestProduct listData={listOutstandingProduct} title={'Sản phẩm nổi bật'} />
+                            <SuggestProduct listData={listSellingProduct} title={'Có thể bạn sẽ thích'} />
                         </View>
                     </SafeAreaView>
                 </KeyboardAwareScrollView>

@@ -1,10 +1,4 @@
-import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icons from '../components/Icons'
@@ -50,9 +44,7 @@ export default function PaymentMethodScreen({ navigation }) {
                     }}
                 >
                     <Icons onPress={handleGoBack} icon={'Back'} size={18} />
-                    <Text style={{ fontSize: 18, fontWeight: '500' }}>
-                        Địa chỉ
-                    </Text>
+                    <Text style={{ fontSize: 18, fontWeight: '500' }}>Phương thức thanh toán</Text>
                 </View>
                 <TouchableOpacity
                     style={{
@@ -77,15 +69,8 @@ export default function PaymentMethodScreen({ navigation }) {
                         marginTop: 24,
                     }}
                 >
-                    <ControllButton
-                        onPress={navigateToCreditCardScreen}
-                        iconName={'CreditCard'}
-                        title={'Thẻ tín dụng, ghi nợ'}
-                    />
-                    <ControllButton
-                        iconName={'DigitalWallet'}
-                        title={'Zalo Pay'}
-                    />
+                    <ControllButton onPress={navigateToCreditCardScreen} iconName={'CreditCard'} title={'Thẻ tín dụng, ghi nợ'} />
+                    <ControllButton iconName={'DigitalWallet'} title={'Zalo Pay'} />
                     <ControllButton iconName={'DigitalWallet'} title={'Momo'} />
                 </View>
             </SafeAreaView>

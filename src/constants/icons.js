@@ -69,12 +69,7 @@ const ShoppingCard = require('../../assets/icons/shopingCard.png')
 const Plus = require('../../assets/icons/plus.png')
 const Minus = require('../../assets/icons/minus-sign.png')
 
-
-
 const Chat = require('../../assets/icons/Chat.png')
-
-
-
 
 export default {
     Home,
@@ -145,5 +140,5 @@ export default {
     Chat,
     ShoppingCard,
     Plus,
-    Minus
+    Minus,
 }

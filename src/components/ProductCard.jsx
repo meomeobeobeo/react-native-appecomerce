@@ -1,11 +1,4 @@
-import {
-    Image,
-    Pressable,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { memo, useState } from 'react'
 import { colors, sizes } from '../constants/theme'
 import Icons from './Icons'
@@ -15,11 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 const ImageSekeleton = () => {
     return (
         <SkeletonPlaceholder>
-            <SkeletonPlaceholder.Item
-                width={120}
-                height={120}
-                borderRadius={8}
-            />
+            <SkeletonPlaceholder.Item width={120} height={120} borderRadius={8} />
         </SkeletonPlaceholder>
     )
 }

@@ -31,19 +31,12 @@ export default function ButtonCustom({
                     flexDirection: 'row',
                     justifyContent: 'center',
                     gap: 8,
-                    alignItems : 'center'
+                    alignItems: 'center',
                 },
                 style,
             ]}
         >
-            {iconName ? (
-                <Image
-                    source={icons[iconName]}
-                    style={{ width: iconButtonSize, height: iconButtonSize }}
-                />
-            ) : (
-                <></>
-            )}
+            {iconName ? <Image source={icons[iconName]} style={{ width: iconButtonSize, height: iconButtonSize }} /> : <></>}
 
             <Text
                 style={[

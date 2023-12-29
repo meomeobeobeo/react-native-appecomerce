@@ -1,10 +1,4 @@
-import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icons from '../components/Icons'
@@ -46,9 +40,7 @@ export default function AddresssScreen({ navigation }) {
                     }}
                 >
                     <Icons onPress={handleGoBack} icon={'Back'} size={18} />
-                    <Text style={{ fontSize: 18, fontWeight: '500' }}>
-                        Địa chỉ
-                    </Text>
+                    <Text style={{ fontSize: 18, fontWeight: '500' }}>Địa chỉ</Text>
                 </View>
                 <TouchableOpacity
                     style={{
@@ -67,9 +59,7 @@ export default function AddresssScreen({ navigation }) {
                 </TouchableOpacity>
                 {/* input field */}
                 <View style={{ width: '84%', marginTop: 32, gap: 12 }}>
-                    <InputField
-                        label={'Tỉnh/Thành phố, Quận/Huyện, Phường/Xã'}
-                    />
+                    <InputField label={'Tỉnh/Thành phố, Quận/Huyện, Phường/Xã'} />
                     <InputField label={'Tên đường, toà nhà , số nhà'} />
                 </View>
                 <BottomCustom

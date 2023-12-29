@@ -21,11 +21,7 @@ export default function OpenScreen() {
                     backgroundColor: '#fff',
                 }}
             >
-                <ImageBackground
-                    source={icons.Logo}
-                    resizeMode="cover"
-                    style={styles.image}
-                />
+                <ImageBackground source={icons.Logo} resizeMode="cover" style={styles.image} />
             </View>
         </View>
     )

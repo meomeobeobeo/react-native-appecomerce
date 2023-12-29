@@ -1,11 +1,4 @@
-import {
-    Image,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../constants/theme'
 import ControllButton from '../components/ControllButton'
@@ -90,30 +83,12 @@ export default function ControlScreen({ navigation }) {
                         marginTop: 24,
                     }}
                 >
-                    <ControllButton
-                        iconName={'ShoppingBag'}
-                        title={'Đơn hàng'}
-                    />
-                    <ControllButton
-                        onPress={navigateToUserInformationScreen}
-                        iconName={'User'}
-                        title={'Thông tin tài khoản'}
-                    />
-                    <ControllButton
-                        onPress={navigateToAddressScreen}
-                        iconName={'Map'}
-                        title={'Địa chỉ'}
-                    />
+                    <ControllButton iconName={'ShoppingBag'} title={'Đơn hàng'} />
+                    <ControllButton onPress={navigateToUserInformationScreen} iconName={'User'} title={'Thông tin tài khoản'} />
+                    <ControllButton onPress={navigateToAddressScreen} iconName={'Map'} title={'Địa chỉ'} />
                     <ControllButton iconName={'Quest'} title={'Trợ giúp'} />
-                    <ControllButton
-                        iconName={'Information'}
-                        title={'Giới thiệu'}
-                    />
-                    <ControllButton
-                        onPress={navigateToPaymentMethodScreen}
-                        iconName={'Credit'}
-                        title={'Phương thức thanh toán'}
-                    />
+                    <ControllButton iconName={'Information'} title={'Giới thiệu'} />
+                    <ControllButton onPress={navigateToPaymentMethodScreen} iconName={'Credit'} title={'Phương thức thanh toán'} />
                     <ControllButton iconName={'Language'} title={'Ngôn ngữ'} />
                 </View>
 

@@ -6,7 +6,7 @@ export const colors = {
     primary: '#070f18',
     gray: '#6d6d6d',
     lightGray: '#7C7C7C',
-    moreLightGray :"#E2E2E2",
+    moreLightGray: '#E2E2E2',
     light: '#fbfbfb',
     white: '#fff',
     black: '#181725',
@@ -14,9 +14,9 @@ export const colors = {
     lightPurple: '#8A88E3',
     purple: '#1B134E',
     red: '#ff4d4d',
-    orange : '#FB5531',
-    yellow : '#FFC41E',
-    blue : '#1255D5'
+    orange: '#FB5531',
+    yellow: '#FFC41E',
+    blue: '#1255D5',
 }
 
 export const shadow = {

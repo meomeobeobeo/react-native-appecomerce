@@ -7,7 +7,7 @@ import { cartSlice } from './CartSlice'
 const store = configureStore({
     reducer: {
         language: languageSlice.reducer,
-        cart : cartSlice.reducer
+        cart: cartSlice.reducer,
     },
     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })

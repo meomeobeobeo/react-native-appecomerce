@@ -29,6 +29,7 @@ import RederModalVerifyEmail from '../components/RederModalVerifyEmail'
 import * as api from '../api/index'
 import { getUniqueId } from 'react-native-device-info'
 import { timeOutApiCall } from '../helper/error'
+import ModalNotify from '../components/ModalNotify'
 
 const widthBox = sizes.width * (4 / 9)
 const heightBox = sizes.width * (4 / 9)
@@ -40,6 +41,9 @@ export default function LoginScreen({ navigation }) {
         email: '',
         password: '',
     })
+    const [isShowNotifyModal, setIsShowNotifyModal] = useState(false)
+    const [notifyMessage, setNotifyMessage] = useState([])
+
     const { t } = useTranslation()
 
     useEffect(() => {
@@ -100,6 +104,9 @@ export default function LoginScreen({ navigation }) {
             ip: ipAddress,
         }
     }
+    const closeNotifyModal = () => {
+        setIsShowNotifyModal(false)
+    }
 
     const handleLoginWithPassword = async () => {
         // login with email and password
@@ -119,7 +126,7 @@ export default function LoginScreen({ navigation }) {
             //network infomation
             const devideInfor = await getCurrentDevideInfor()
 
-            const timeOutMs = 15000
+            const timeOutMs = 10000
             let result = await timeOutApiCall({
                 apiPromise: api.loginWithPassWord({
                     email: loginForm.email,
@@ -131,10 +138,8 @@ export default function LoginScreen({ navigation }) {
                     os: devideInfor.os,
                     osVersion: devideInfor.osVersion,
                 }),
-                timeoutMs : timeOutMs
+                timeoutMs: timeOutMs,
             })
-            
-
 
             if (result.data?.statusCode === 202) {
                 // show modal verify devide
@@ -143,14 +148,8 @@ export default function LoginScreen({ navigation }) {
             } else if (result.data?.statusCode === 200) {
                 const loginData = result.data?.metaData
 
-                await AsyncStorage.setItem(
-                    'AccessToken',
-                    loginData?.token || '',
-                )
-                await AsyncStorage.setItem(
-                    'userInfor',
-                    JSON.stringify(loginData?.userInfor),
-                )
+                await AsyncStorage.setItem('AccessToken', loginData?.token || '')
+                await AsyncStorage.setItem('userInfor', JSON.stringify(loginData?.userInfor))
 
                 setIsLoading(false)
                 setLoginForm({
@@ -164,6 +163,8 @@ export default function LoginScreen({ navigation }) {
             }
         } catch (error) {
             setIsLoading(false)
+            setNotifyMessage(error?.response?.data?.message || ['Server error'])
+            setIsShowNotifyModal(true)
             console.error(error)
         }
     }
@@ -172,10 +173,7 @@ export default function LoginScreen({ navigation }) {
     }
 
     return (
-        <ScrollView
-            contentContainerStyle={{ flex: 1, backgroundColor: colors.white }}
-            keyboardShouldPersistTaps="handled"
-        >
+        <ScrollView contentContainerStyle={{ flex: 1, backgroundColor: colors.white }} keyboardShouldPersistTaps="handled">
             <KeyboardAwareScrollView style={{ flex: 1, marginBottom: 20 }}>
                 <View style={styles.slider}>
                     <View
@@ -203,11 +201,7 @@ export default function LoginScreen({ navigation }) {
                                 justifyContent: 'center',
                             }}
                         >
-                            <ImageBackground
-                                source={icons.Logo}
-                                resizeMode="cover"
-                                style={styles.image}
-                            />
+                            <ImageBackground source={icons.Logo} resizeMode="cover" style={styles.image} />
                         </View>
                     </View>
                     <View style={styles.inputArea}>
@@ -347,13 +341,8 @@ export default function LoginScreen({ navigation }) {
                     />
                 </View>
                 {<LoadingModal visible={isLoading} />}
-                {
-                    <RederModalVerifyEmail
-                        visible={isShowOtpVerify}
-                        closeModal={closeModalOtpVerify}
-                        formAction={verifyOtpLoginDevide}
-                    />
-                }
+                {<RederModalVerifyEmail visible={isShowOtpVerify} closeModal={closeModalOtpVerify} formAction={verifyOtpLoginDevide} />}
+                {<ModalNotify header={'Có lỗi xảy ra'} notiMessage={notifyMessage} visible={isShowNotifyModal} closeModal={closeNotifyModal} />}
             </KeyboardAwareScrollView>
         </ScrollView>
     )

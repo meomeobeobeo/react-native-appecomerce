@@ -1,18 +1,8 @@
-import {
-    ImageBackground,
-    Modal,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    View,
-    Keyboard,
-    FlatList,
-} from 'react-native'
+import { ImageBackground, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, Keyboard, FlatList } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { memo, useEffect, useLayoutEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+
 import { colors } from '../constants/theme'
 import icons from '../constants/icons'
 import ButtonCustom from './ButtonCustom'
@@ -20,25 +10,11 @@ import Icons from './Icons'
 import * as api from '../api/index'
 //action_type is 'add_product_to_cart' or 'purchase'
 
-export function ModalChooseVariation({
-    visible,
-    closeModal,
-    navigation,
-    variation_list,
-    action_type,
-    functionAction,
-    product_item_id,
-    price,
-}) {
+export function ModalChooseVariation({ visible, closeModal,  variation_list, action_type, functionAction, product_item_id, price }) {
     const [qty, setQty] = useState(1)
-    const [product_configuration_list, setProduct_configuration_list] =
-        useState([])
-
-    const addOrRemoveProductConfigurationListFromArray = (
-        product_configuration_id,
-        variation_name,
-        variation_id,
-    ) => {
+    const [product_configuration_list, setProduct_configuration_list] = useState([])
+    const navigation = useNavigation()
+    const addOrRemoveProductConfigurationListFromArray = (product_configuration_id, variation_name, variation_id) => {
         // Check if variation_id is in the object { variation_id: '', variation_name: '', product_configuration_id: '' }
         if (product_configuration_list.length === 0) {
             // Add to list
@@ -52,15 +28,9 @@ export function ModalChooseVariation({
             ]
             setProduct_configuration_list(newList)
         } else {
-            if (
-                product_configuration_list.find(
-                    (value) => value.variation_id === variation_id,
-                )
-            ) {
+            if (product_configuration_list.find((value) => value.variation_id === variation_id)) {
                 // Delete old
-                let newList = product_configuration_list.filter(
-                    (value) => value.variation_id !== variation_id,
-                )
+                let newList = product_configuration_list.filter((value) => value.variation_id !== variation_id)
                 newList.push({
                     product_configuration_id,
                     variation_name,
@@ -83,29 +53,16 @@ export function ModalChooseVariation({
 
     // console.log(variation_list)
     const renderItem = ({ item, index, variation_name, variation_id }) => {
-        let activeChoosen = product_configuration_list.find(
-            (value) =>
-                value.product_configuration_id ===
-                item.product_configuration_id,
-        )
+        let activeChoosen = product_configuration_list.find((value) => value.product_configuration_id === item.product_configuration_id)
         return (
             <TouchableOpacity
                 onPress={() => {
-                    addOrRemoveProductConfigurationListFromArray(
-                        item.product_configuration_id,
-                        variation_name,
-                        variation_id,
-                    )
+                    addOrRemoveProductConfigurationListFromArray(item.product_configuration_id, variation_name, variation_id)
                 }}
                 key={item.product_configuration_id}
                 style={styles.gridItemContainer}
             >
-                <View
-                    style={[
-                        styles.gridItem,
-                        activeChoosen ? styles.active : {},
-                    ]}
-                >
+                <View style={[styles.gridItem, activeChoosen ? styles.active : {}]}>
                     <Text>{item.value}</Text>
                 </View>
             </TouchableOpacity>
@@ -116,6 +73,39 @@ export function ModalChooseVariation({
     const listVariationName = variation_list?.map((value, index) => {
         return value?.variation_name
     })
+    const navigateToPaymentScreen = async () => {
+        try {
+            const userData = JSON.parse(await AsyncStorage.getItem('userInfor'))
+
+            const user_id = userData.id
+            const payment_method_id = '0030511258852154'
+            const shipping_address_id = '0030511326754648'
+            const shipping_method_id = '0030511287746640'
+            const order_total = '1'
+            const order_status = 'PENDING'
+            const product_configuration_id_list = product_configuration_list.map((value) => {
+                return value?.product_configuration_id
+            })
+
+            navigation.navigate('PaymentScreen', {
+                formData: {
+                    user_id: user_id,
+                    order_date: new Date().toISOString(),
+                    payment_method_id: payment_method_id,
+                    shipping_address_id: shipping_address_id,
+                    shipping_method_id: shipping_method_id,
+                    order_total: order_total,
+                    order_status: order_status,
+                    product_item_id: product_item_id,
+                    qty: qty.toString(),
+                    price: price,
+                    product_configuration_id_list: product_configuration_id_list,
+                },
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const purchaseProductItem = async () => {
         try {
@@ -127,10 +117,9 @@ export function ModalChooseVariation({
             const shipping_method_id = '0030511287746640'
             const order_total = '1'
             const order_status = 'PENDING'
-            const product_configuration_id_list =
-                product_configuration_list.map((value) => {
-                    return value?.product_configuration_id
-                })
+            const product_configuration_id_list = product_configuration_list.map((value) => {
+                return value?.product_configuration_id
+            })
             //call api
             let result = await api.purchaseShoppingCartItem({
                 formData: {
@@ -144,8 +133,7 @@ export function ModalChooseVariation({
                     product_item_id: product_item_id,
                     qty: qty.toString(),
                     price: price,
-                    product_configuration_id_list:
-                        product_configuration_id_list,
+                    product_configuration_id_list: product_configuration_id_list,
                 },
             })
         } catch (error) {
@@ -189,14 +177,11 @@ export function ModalChooseVariation({
                                 },
                             ]}
                         >
-                            <TouchableWithoutFeedback
-                                onPress={() => Keyboard.dismiss()}
-                            >
+                            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                                 <View
                                     style={[
                                         {
-                                            backgroundColor:
-                                                'rgba(255, 255, 255, 1)',
+                                            backgroundColor: 'rgba(255, 255, 255, 1)',
                                             padding: 16,
                                             width: '100%',
                                             height: '80%',
@@ -229,8 +214,7 @@ export function ModalChooseVariation({
                                             marginTop: 12,
                                             alignItems: 'center',
                                             justifyContent: 'space-around',
-                                            borderBottomColor:
-                                                colors.moreLightGray,
+                                            borderBottomColor: colors.moreLightGray,
                                             borderBottomWidth: 1,
                                         }}
                                     >
@@ -251,8 +235,7 @@ export function ModalChooseVariation({
                                         >
                                             <View
                                                 style={{
-                                                    backgroundColor:
-                                                        colors.moreLightGray,
+                                                    backgroundColor: colors.moreLightGray,
                                                     padding: 8,
                                                     justifyContent: 'center',
                                                     alignItems: 'center',
@@ -261,9 +244,7 @@ export function ModalChooseVariation({
                                             >
                                                 <Icons
                                                     onPress={() => {
-                                                        setQty(
-                                                            (prev) => prev - 1,
-                                                        )
+                                                        setQty((prev) => prev - 1)
                                                     }}
                                                     icon={'Minus'}
                                                     size={24}
@@ -279,8 +260,7 @@ export function ModalChooseVariation({
                                             </Text>
                                             <View
                                                 style={{
-                                                    backgroundColor:
-                                                        colors.moreLightGray,
+                                                    backgroundColor: colors.moreLightGray,
                                                     padding: 8,
                                                     justifyContent: 'center',
                                                     alignItems: 'center',
@@ -289,9 +269,7 @@ export function ModalChooseVariation({
                                             >
                                                 <Icons
                                                     onPress={() => {
-                                                        setQty(
-                                                            (prev) => prev + 1,
-                                                        )
+                                                        setQty((prev) => prev + 1)
                                                     }}
                                                     icon={'Plus'}
                                                     size={24}
@@ -302,10 +280,7 @@ export function ModalChooseVariation({
 
                                     {variation_list.map((variation, index) => {
                                         return (
-                                            <View
-                                                key={variation.variation_id}
-                                                style={{ width: '100%' }}
-                                            >
+                                            <View key={variation.variation_id} style={{ width: '100%' }}>
                                                 <View
                                                     style={{
                                                         width: '100%',
@@ -318,36 +293,24 @@ export function ModalChooseVariation({
                                                             fontWeight: 600,
                                                         }}
                                                     >
-                                                        {
-                                                            variation?.variation_name
-                                                        }
+                                                        {variation?.variation_name}
                                                     </Text>
                                                     <FlatList
                                                         columnWrapperStyle={{
                                                             flex: 1,
-                                                            justifyContent:
-                                                                'space-between',
+                                                            justifyContent: 'space-between',
                                                         }}
                                                         scrollEnabled={false}
-                                                        data={
-                                                            variation?.configurations
-                                                        }
-                                                        renderItem={({
-                                                            item,
-                                                            index,
-                                                        }) => {
+                                                        data={variation?.configurations}
+                                                        renderItem={({ item, index }) => {
                                                             return renderItem({
                                                                 item,
                                                                 index,
-                                                                variation_name:
-                                                                    variation?.variation_name,
-                                                                variation_id:
-                                                                    variation?.variation_id,
+                                                                variation_name: variation?.variation_name,
+                                                                variation_id: variation?.variation_id,
                                                             })
                                                         }}
-                                                        keyExtractor={(item) =>
-                                                            item.product_configuration_id
-                                                        }
+                                                        keyExtractor={(item) => item.product_configuration_id}
                                                         numColumns={2} // Change this value based on your desired number of columns
                                                     />
                                                 </View>
@@ -356,7 +319,8 @@ export function ModalChooseVariation({
                                     })}
                                     <ButtonCustom
                                         onPress={() => {
-                                            purchaseProductItem()
+                                            // purchaseProductItem()
+                                            navigateToPaymentScreen()
                                         }}
                                         style={{
                                             position: 'absolute',

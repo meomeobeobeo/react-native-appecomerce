@@ -1,11 +1,4 @@
-import {
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    Animated,
-    KeyboardAvoidingView,
-} from 'react-native'
+import { Image, StyleSheet, Text, View, Animated, KeyboardAvoidingView } from 'react-native'
 import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from '../screens/HomeScreen'
@@ -71,7 +64,6 @@ export default function TabNavigator() {
         >
             <Tab.Navigator
                 sceneContainerStyle={{
-                    
                     backgroundColor: colors.white,
                 }}
                 safeAreaInsets={{ bottom: 0 }}
@@ -89,12 +81,8 @@ export default function TabNavigator() {
                                     return (
                                         <Icons
                                             style={{
-                                                tintColor: focused
-                                                    ? colors.primary
-                                                    : colors.gray,
-                                                backgroundColor: focused
-                                                    ? '#48ceff'
-                                                    : '#fff',
+                                                tintColor: focused ? colors.primary : colors.gray,
+                                                backgroundColor: focused ? '#48ceff' : '#fff',
                                                 borderRadius: 8,
                                             }}
                                             size={28}
@@ -106,8 +94,7 @@ export default function TabNavigator() {
                             listeners={{
                                 focus: () => {
                                     Animated.spring(offsetAnimation, {
-                                        toValue:
-                                            index * (sizes.width / tabs.length),
+                                        toValue: index * (sizes.width / tabs.length),
                                         useNativeDriver: true,
                                     }).start()
                                 },

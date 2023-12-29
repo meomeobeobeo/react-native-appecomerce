@@ -167,10 +167,7 @@ export const TOP_PLACES = [
         description:
             'The ultimate Amalfi Coast travel guide, where to stay, where to eat, and what areas to visit in the Amalfi Coast of Italy. Positano, Ravello, Amalfi and more',
         rating: 9.4,
-        gallery: [
-            require('../../assets/images/trips/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'),
-            require('../../assets/images/trips/af933a359582704eee05be198e882be0.jpeg'),
-        ],
+        gallery: [require('../../assets/images/trips/3722dd4614a5a58f2ec8ebf17c22f76d.jpeg'), require('../../assets/images/trips/af933a359582704eee05be198e882be0.jpeg')],
         reviews: [REVIEWS[2], REVIEWS[1]],
         hotels: [HOTELS[9], HOTELS[10]],
         type: 'PLACE',
@@ -180,8 +177,7 @@ export const TOP_PLACES = [
         image: require('../../assets/images/trips/922a0cb274208ccd234f6c14f2174b8b.jpeg'),
         title: 'Granada',
         location: 'Spain',
-        description:
-            'Granada is the capital city of the province of Granada, in the autonomous community of Andalusia, Spain',
+        description: 'Granada is the capital city of the province of Granada, in the autonomous community of Andalusia, Spain',
         rating: 8.9,
         gallery: [],
         reviews: [REVIEWS[1], REVIEWS[2]],
@@ -193,8 +189,7 @@ export const TOP_PLACES = [
         image: require('../../assets/images/trips/e57a2a310330ee1d8928eb75d416a53d.jpeg'),
         title: 'Cherry blossoms',
         location: 'Japan',
-        description:
-            "Cherry blossoms usually bloom between mid-March and early May. In 2022, Tokyo's cherry blossom season officially began on March 20",
+        description: "Cherry blossoms usually bloom between mid-March and early May. In 2022, Tokyo's cherry blossom season officially began on March 20",
         rating: 7.4,
         gallery: [],
         reviews: [REVIEWS[1], REVIEWS[2]],
@@ -239,8 +234,7 @@ export const PLACES = [
         image: require('../../assets/images/trips/0e627c12c05e4dd93ab122d618ea7849.jpeg'),
         title: 'Bora Bora',
         location: 'Polynesia',
-        description:
-            'Learn how you can travel Bora Bora on a budget and how overwater bungalows are possible for cheap plus tips on keeping Bora Bora trip costs low.',
+        description: 'Learn how you can travel Bora Bora on a budget and how overwater bungalows are possible for cheap plus tips on keeping Bora Bora trip costs low.',
         rating: 8.9,
         gallery: [],
         reviews: [REVIEWS[1], REVIEWS[2]],
@@ -252,8 +246,7 @@ export const PLACES = [
         image: require('../../assets/images/trips/c2dcbb54ca9316831b0f6ed4d4136dda.jpeg'),
         title: 'Phuket',
         location: 'Thailand',
-        description:
-            'Phuket is the largest island in Thailand. It is located in the Andaman Sea in southern Thailand',
+        description: 'Phuket is the largest island in Thailand. It is located in the Andaman Sea in southern Thailand',
         rating: 9.2,
         gallery: [],
         reviews: [REVIEWS[2], REVIEWS[1]],

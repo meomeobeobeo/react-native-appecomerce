@@ -21,10 +21,8 @@ import Icons from './Icons'
 const widthBox = sizes.width * (4 / 9)
 const heightBox = sizes.width * (4 / 9)
 
-export default function RederModalVerifyEmail({ visible, closeModal , formAction ,  navigation }) {
-
-    let [otpValue , setOtpValue] = useState('')
-
+export default function RederModalVerifyEmail({ visible, closeModal, formAction, navigation }) {
+    let [otpValue, setOtpValue] = useState('')
 
     return (
         <Modal animationType="slide" transparent={true} visible={visible}>
@@ -68,9 +66,7 @@ export default function RederModalVerifyEmail({ visible, closeModal , formAction
                             ]}
                         >
                             {/* header */}
-                            <View
-                                style={{ width: '60%', alignItems: 'center' }}
-                            >
+                            <View style={{ width: '60%', alignItems: 'center' }}>
                                 <Text
                                     style={{
                                         color: '#0c144f',
@@ -90,8 +86,7 @@ export default function RederModalVerifyEmail({ visible, closeModal , formAction
                                         marginTop: 32,
                                     }}
                                 >
-                                    We sent a verification code to
-                                    meomeo@gmail.com
+                                    We sent a verification code to meomeo@gmail.com
                                 </Text>
                                 <View
                                     style={{
@@ -99,21 +94,17 @@ export default function RederModalVerifyEmail({ visible, closeModal , formAction
                                         height: 180,
                                     }}
                                 >
-                                    <ImageBackground
-                                        source={icons.Logo}
-                                        resizeMode="cover"
-                                        style={styles.image}
-                                    />
+                                    <ImageBackground source={icons.Logo} resizeMode="cover" style={styles.image} />
                                 </View>
                             </View>
 
                             {/* verify code */}
-                            <View
-                                style={{ width: '80%', alignItems: 'center' }}
-                            >
+                            <View style={{ width: '80%', alignItems: 'center' }}>
                                 <TextInput
                                     style={styles.input}
-                                    onChangeText={(e) => {setOtpValue(e)}}
+                                    onChangeText={(e) => {
+                                        setOtpValue(e)
+                                    }}
                                     placeholder="verify code"
                                     keyboardType="number-pad"
                                     maxLength={6}
@@ -131,7 +122,7 @@ export default function RederModalVerifyEmail({ visible, closeModal , formAction
                             >
                                 <ButtonCustom
                                     onPress={() => {
-                                        formAction({otpCode : otpValue})
+                                        formAction({ otpCode: otpValue })
                                     }}
                                     style={{
                                         backgroundColor: '#151d56',

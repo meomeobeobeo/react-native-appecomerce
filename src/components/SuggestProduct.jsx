@@ -26,25 +26,22 @@ const data = [
     // },
 ]
 const renderItem = ({ item, index, itemStyle }) => {
-   
     return <ProductCard item={item} key={index.toString()} />
 }
 
-export default function SuggestProduct({title , listProductData , listData = [] }) {
-    
+export default function SuggestProduct({ title, listProductData, listData = [] }) {
     return (
         <View
             style={{
                 backgroundColor: colors.white,
-                padding : 8,
+                padding: 8,
                 height: 320,
                 borderRadius: 8,
                 display: 'flex',
                 flexDirection: 'column',
-                marginBottom : 12,
-                borderColor : colors.lightGray,
-                borderTopWidth : 1
-                
+                marginBottom: 12,
+                borderColor: colors.lightGray,
+                borderTopWidth: 1,
             }}
         >
             {/* header */}
@@ -54,7 +51,7 @@ export default function SuggestProduct({title , listProductData , listData = [] 
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginLeft:8
+                    marginLeft: 8,
                 }}
             >
                 <Text
@@ -86,10 +83,8 @@ export default function SuggestProduct({title , listProductData , listData = [] 
                 }}
                 style={{
                     width: '100%',
-
                 }}
                 horizontal={true}
-               
             />
         </View>
     )

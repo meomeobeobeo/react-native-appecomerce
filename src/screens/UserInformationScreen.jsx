@@ -8,13 +8,21 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import Icons from '../components/Icons'
 import InputField from '../components/InputField'
 import ButtonCustom from '../components/ButtonCustom'
 import { colors } from '../constants/theme'
 
 export default function UserInformationScreen({ navigation }) {
+    const [userInfor, setUserInfor] = useState({
+        userName : '',
+        email : '',
+
+    })
     const handleGoBack = () => {
         if (navigation.canGoBack()) {
             navigation.goBack()
@@ -23,9 +31,32 @@ export default function UserInformationScreen({ navigation }) {
             navigation.navigate('Root')
         }
     }
+    useFocusEffect(
+        React.useCallback(() => {
+          
+            async function fetchData() {
+                const userData = JSON.parse(await AsyncStorage.getItem('userInfor'))
+                console.log(userData.userName)
+                setUserInfor({
+                    userName : userData.userName,
+                    email : userData.email,
+                })
+               
+                // ...
+            }
+
+            fetchData()
+
+            return () => {
+                console.log('unfocus root')
+            }
+        }, [navigation]),
+    )
+
+    useEffect(() => {}, [])
 
     return (
-        <ScrollView style={{ flex: 1 , backgroundColor : colors.white }}>
+        <ScrollView style={{ flex: 1, backgroundColor: colors.white }}>
             <SafeAreaView
                 style={{
                     flex: 1,
@@ -46,9 +77,7 @@ export default function UserInformationScreen({ navigation }) {
                     }}
                 >
                     <Icons onPress={handleGoBack} icon={'Back'} size={18} />
-                    <Text style={{ fontSize: 18, fontWeight: '500' }}>
-                        Thông tin tài khoản
-                    </Text>
+                    <Text style={{ fontSize: 18, fontWeight: '500' }}>Thông tin tài khoản</Text>
                 </View>
                 {/* avarta view */}
                 <View
@@ -84,8 +113,8 @@ export default function UserInformationScreen({ navigation }) {
                         gap: 6,
                     }}
                 >
-                    <InputField label={'Họ Tên'} />
-                    <InputField label={'Email'} />
+                    <InputField inputData={userInfor.userName}  label={'Họ Tên'} />
+                    <InputField inputData={userInfor.email} label={'Email'} />
                     <InputField iconLabel={'Calendar'} label={'Ngày sinh'} />
                     <InputField label={'Số điện thoại'} />
                 </View>
@@ -98,8 +127,7 @@ export default function UserInformationScreen({ navigation }) {
                         borderWidth: 0,
                     }}
                     buttonText="Chỉnh sửa thông tin"
-                    
-               />
+                />
             </SafeAreaView>
         </ScrollView>
     )

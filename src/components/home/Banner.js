@@ -26,13 +26,7 @@ const data = [
     },
 ]
 const renderItem = ({ item, index, itemStyle }) => {
-    return (
-        <Image
-            id={index.toString()}
-            style={[itemStyle, { resizeMode: 'contain' }]}
-            source={item.image}
-        />
-    )
+    return <Image id={index.toString()} style={[itemStyle, { resizeMode: 'contain' }]} source={item.image} />
 }
 const DotIndicators = ({ listData, styleAll, currentIndex }) => {
     return (
@@ -81,16 +75,15 @@ const DotIndicators = ({ listData, styleAll, currentIndex }) => {
 function Banner({ bannerStyle, itemStyle }) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [activeIndex, setActiveIndex] = useState(0)
-    
+
     const flashListRef = useRef()
 
-    const getItemLayout = (data , index)=>{
-         return {
-            length : sizes.width -16 ,
-            offset : (sizes.width -16)*index,
-            index : index
-         }
-
+    const getItemLayout = (data, index) => {
+        return {
+            length: sizes.width - 16,
+            offset: (sizes.width - 16) * index,
+            index: index,
+        }
     }
 
     useEffect(() => {

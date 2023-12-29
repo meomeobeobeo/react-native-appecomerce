@@ -1,12 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import {
-    Dimensions,
-    Platform,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native'
+import { Dimensions, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import MainNavigator from './src/navigations/MainNavigator'
 import Welcome from './src/screens/Welcome'
 import LoginScreen from './src/screens/LoginScreen'
@@ -20,7 +13,6 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import OpenScreen from './src/screens/OpenScreen'
 import { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
-
 
 export default function App() {
     const { t } = useTranslation()

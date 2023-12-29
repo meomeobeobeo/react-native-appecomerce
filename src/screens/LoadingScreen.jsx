@@ -15,8 +15,8 @@ export default function LoadingScreen() {
         >
             <LottieView
                 style={{
-                    width : sizes.width*(1/2),
-                    height : sizes.width*(1/2)
+                    width: sizes.width * (1 / 2),
+                    height: sizes.width * (1 / 2),
                 }}
                 source={loadingAnimate}
                 autoPlay

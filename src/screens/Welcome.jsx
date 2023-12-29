@@ -1,29 +1,11 @@
-import {
-    Image,
-    ImageBackground,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { Image, ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useReducer } from 'react'
 import { colors } from '../constants/theme'
 import icons from '../constants/icons'
 import Button from '../components/ButtonCustom'
 import ButtonCustom from '../components/ButtonCustom'
 import { useFocusEffect } from '@react-navigation/native'
-import {
-    getUniqueId,
-    getManufacturer,
-    getDeviceId,
-    getDeviceName,
-    getBaseOs,
-    getApiLevel,
-    getBatteryLevel,
-    getBaseOsSync,
-    getIpAddress,
-} from 'react-native-device-info'
+import { getUniqueId, getManufacturer, getDeviceId, getDeviceName, getBaseOs, getApiLevel, getBatteryLevel, getBaseOsSync, getIpAddress } from 'react-native-device-info'
 import * as expo_devide from 'expo-device'
 import NetInfo from '@react-native-community/netinfo'
 import { useTranslation } from 'react-i18next'
@@ -79,11 +61,7 @@ export default function Welcome({ navigation }) {
         <SafeAreaView style={styles.body}>
             <View style={styles.slider}>
                 <View style={{ width: '100%', flex: 2 }}>
-                    <ImageBackground
-                        source={icons.Logo}
-                        resizeMode="cover"
-                        style={styles.image}
-                    />
+                    <ImageBackground source={icons.Logo} resizeMode="cover" style={styles.image} />
                 </View>
                 <View
                     style={{

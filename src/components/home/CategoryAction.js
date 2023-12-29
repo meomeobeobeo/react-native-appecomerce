@@ -41,7 +41,7 @@ export default function CategoryAction({ nameCategory, iconName, style }) {
             <Text
                 style={{
                     fontSize: 10,
-                    marginBottom : 8
+                    marginBottom: 8,
                 }}
             >
                 {nameCategory}

@@ -1,12 +1,4 @@
-import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    View,
-} from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors, sizes } from '../constants/theme'
@@ -20,10 +12,12 @@ const SuggestSearch = ({ active, onClose, onOpen }) => {
     const containerRef = useRef()
 
     return (
-        <TouchableWithoutFeedback onPress={()=>{
-            console.log('true search ')
-            onOpen()
-        }}>
+        <TouchableWithoutFeedback
+            onPress={() => {
+                console.log('true search ')
+                onOpen()
+            }}
+        >
             <View
                 ref={containerRef}
                 style={[
@@ -116,9 +110,7 @@ export default function SearchScreen({ navigation }) {
                 Keyboard.dismiss() // Dismiss the keyboard if it's open
             }}
         >
-            <ScrollView
-                style={{ flex: 1, margin: 0, backgroundColor: colors.white }}
-            >
+            <ScrollView style={{ flex: 1, margin: 0, backgroundColor: colors.white }}>
                 <SafeAreaView
                     onTouchStart={(event) => {}}
                     style={{
@@ -150,7 +142,7 @@ export default function SearchScreen({ navigation }) {
                             }}
                         >
                             <TextInput
-                                onSubmitEditing={()=>{
+                                onSubmitEditing={() => {
                                     console.log('submit')
                                     setIsShowSuggestSearch(false)
                                 }}
@@ -416,11 +408,7 @@ export default function SearchScreen({ navigation }) {
                         </View>
                     </View>
 
-                    <SuggestSearch
-                        onOpen={showSuggestSearch}
-                        onClose={closeSuggestSearch}
-                        active={isShowSuggestSearch}
-                    />
+                    <SuggestSearch onOpen={showSuggestSearch} onClose={closeSuggestSearch} active={isShowSuggestSearch} />
                 </SafeAreaView>
             </ScrollView>
         </TouchableWithoutFeedback>
