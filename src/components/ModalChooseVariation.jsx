@@ -1,4 +1,16 @@
-import { ImageBackground, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, Keyboard, FlatList } from 'react-native'
+import {
+    ImageBackground,
+    Modal,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View,
+    Keyboard,
+    FlatList,
+} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { memo, useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
@@ -8,11 +20,25 @@ import icons from '../constants/icons'
 import ButtonCustom from './ButtonCustom'
 import Icons from './Icons'
 import * as api from '../api/index'
+import ModalNotify from './ModalNotify'
 //action_type is 'add_product_to_cart' or 'purchase'
 
-export function ModalChooseVariation({ visible, closeModal,  variation_list, action_type, functionAction, product_item_id, price }) {
+export function ModalChooseVariation({
+    visible,
+    closeModal,
+    variation_list,
+    action_type,
+    functionAction,
+    product_item_id,
+    price,
+    product_item_infor,
+}) {
+    console.log(product_item_infor)
     const [qty, setQty] = useState(1)
     const [product_configuration_list, setProduct_configuration_list] = useState([])
+    const [isShowModalNotify, setIsShowModalNotify] = useState(false)
+    const [notifyMessage, setNotifyMessage] = useState([])
+
     const navigation = useNavigation()
     const addOrRemoveProductConfigurationListFromArray = (product_configuration_id, variation_name, variation_id) => {
         // Check if variation_id is in the object { variation_id: '', variation_name: '', product_configuration_id: '' }
@@ -53,11 +79,17 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
 
     // console.log(variation_list)
     const renderItem = ({ item, index, variation_name, variation_id }) => {
-        let activeChoosen = product_configuration_list.find((value) => value.product_configuration_id === item.product_configuration_id)
+        let activeChoosen = product_configuration_list.find(
+            (value) => value.product_configuration_id === item.product_configuration_id,
+        )
         return (
             <TouchableOpacity
                 onPress={() => {
-                    addOrRemoveProductConfigurationListFromArray(item.product_configuration_id, variation_name, variation_id)
+                    addOrRemoveProductConfigurationListFromArray(
+                        item.product_configuration_id,
+                        variation_name,
+                        variation_id,
+                    )
                 }}
                 key={item.product_configuration_id}
                 style={styles.gridItemContainer}
@@ -101,6 +133,7 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
                     price: price,
                     product_configuration_id_list: product_configuration_id_list,
                 },
+                product_item_infor: product_item_infor,
             })
         } catch (error) {
             console.error(error)
@@ -140,11 +173,24 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
             console.log(error)
         }
     }
-
+    const handleCloseModalNotify = ()=>{
+        setIsShowModalNotify(false)
+        setQty(20)
+    }
     // console.log(listVariationName)
     useLayoutEffect(() => {
         if (qty < 0) {
             setQty(0)
+        }
+    }, [qty])
+    
+
+
+    useEffect(() => {
+        if(qty > parseInt(product_item_infor.qty_in_stock)){
+            setNotifyMessage(prev => [`Lưu ý chỉ còn ${product_item_infor.qty_in_stock} sản phẩm.`])
+            setIsShowModalNotify(true)
+            
         }
     }, [qty])
 
@@ -247,13 +293,13 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
                                                         setQty((prev) => prev - 1)
                                                     }}
                                                     icon={'Minus'}
-                                                    size={24}
+                                                    size={12}
                                                 />
                                             </View>
                                             <Text
                                                 style={{
                                                     color: colors.red,
-                                                    fontSize: 18,
+                                                    fontSize: 16,
                                                 }}
                                             >
                                                 {qty}
@@ -272,7 +318,7 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
                                                         setQty((prev) => prev + 1)
                                                     }}
                                                     icon={'Plus'}
-                                                    size={24}
+                                                    size={12}
                                                 />
                                             </View>
                                         </View>
@@ -339,6 +385,9 @@ export function ModalChooseVariation({ visible, closeModal,  variation_list, act
                                 </View>
                             </TouchableWithoutFeedback>
                         </View>
+                        
+                        <ModalNotify header={'Có lỗi xảy ra'} notiMessage={notifyMessage} visible={isShowModalNotify} closeModal={handleCloseModalNotify}/>
+
                     </ScrollView>
                 </View>
             </TouchableWithoutFeedback>

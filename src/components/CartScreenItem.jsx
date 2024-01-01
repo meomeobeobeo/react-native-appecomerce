@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useState } from 'react'
 import { colors } from '../constants/theme'
 import Icons from './Icons'
 
-export default function CartItem() {
+export default function CartScreenItem() {
     const [isLoadingImage, setIsLoadingImage] = useState(false)
     const [qty, setQty] = useState(1)
     useLayoutEffect(() => {

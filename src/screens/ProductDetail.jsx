@@ -627,6 +627,16 @@ function ProductDetail({ navigation }) {
                     closeModal={hiddenModalChooseVariation}
                     variation_list={productDetail.variation_list}
                     price={productDetail.price}
+                    product_item_infor={
+                        {
+                            id : productDetail.id ,
+                            SKU : productDetail.SKU,
+                            qty_in_stock : productDetail.qty_in_stock,
+                            product_image : productDetail.product_image,
+                            price : productDetail.price,
+                            rateValue : productDetail.rateValue
+                        }
+                    }
                 />
             </View>
         </View>

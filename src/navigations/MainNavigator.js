@@ -29,7 +29,7 @@ export default function MainNavigator() {
                 screenOptions={{
                     headerShown: false,
                 }}
-                initialRouteName="Welcome"
+                initialRouteName="Root"
             >
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Root" component={TabNavigator} />
